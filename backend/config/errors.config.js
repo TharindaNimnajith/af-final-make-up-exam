@@ -1,4 +1,4 @@
-class HttpError extends Error {
+class HttpErrors extends Error {
   constructor(message, errorCode) {
     super(message)
     this._code = errorCode
@@ -13,4 +13,4 @@ class HttpError extends Error {
   }
 }
 
-module.exports = HttpError
+module.exports = HttpErrors

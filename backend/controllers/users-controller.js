@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 
-const HttpErrorsModel = require('../models/http-errors')
+const HttpErrors = require('../config/errors.config')
 const UserModel = require('../models/users.model')
 
 const addUser = async (req, res, next) => {
@@ -19,7 +19,7 @@ const addUser = async (req, res, next) => {
     })
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   if (existingUser) {
@@ -27,7 +27,7 @@ const addUser = async (req, res, next) => {
       exists: true,
       message: 'A user with the same email already exists.'
     })
-    return next(new HttpErrorsModel('A user with the same email already exists.', 409))
+    return next(new HttpErrors('A user with the same email already exists.', 409))
   }
 
   const newUser = new UserModel({
@@ -41,7 +41,7 @@ const addUser = async (req, res, next) => {
     await newUser.save()
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   res.status(201).send({
@@ -65,7 +65,7 @@ const addAdmin = async (req, res, next) => {
     })
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   if (existingUser) {
@@ -73,7 +73,7 @@ const addAdmin = async (req, res, next) => {
       exists: true,
       message: 'A user with the same email already exists.'
     })
-    return next(new HttpErrorsModel('A user with the same email already exists.', 409))
+    return next(new HttpErrors('A user with the same email already exists.', 409))
   }
 
   const newUser = new UserModel({
@@ -88,7 +88,7 @@ const addAdmin = async (req, res, next) => {
     await newUser.save()
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   res.status(201).send({
@@ -116,7 +116,7 @@ const updateUser = async (req, res, next) => {
     user = await UserModel.findById(id)
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   try {
@@ -125,7 +125,7 @@ const updateUser = async (req, res, next) => {
     })
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   if (existingUser && email !== user.email) {
@@ -133,7 +133,7 @@ const updateUser = async (req, res, next) => {
       exists: true,
       message: 'A user with the same email already exists.'
     })
-    return next(new HttpErrorsModel('A user with the same email already exists.', 409))
+    return next(new HttpErrors('A user with the same email already exists.', 409))
   }
 
   user.firstName = firstName
@@ -146,7 +146,7 @@ const updateUser = async (req, res, next) => {
     await user.save()
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   res.status(200).send({
@@ -166,7 +166,7 @@ const deleteUser = async (req, res, next) => {
     await user.remove()
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   res.status(200).send({
@@ -185,7 +185,7 @@ const getUser = async (req, res, next) => {
     user = await UserModel.findById(id)
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   user.userCapacity = user.userCapacity.toString()
@@ -200,7 +200,7 @@ const getUserList = async (req, res, next) => {
     userList = await UserModel.find()
   } catch (error) {
     console.log(error)
-    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
   }
 
   for (let i = 0; i < userList.length; i++)

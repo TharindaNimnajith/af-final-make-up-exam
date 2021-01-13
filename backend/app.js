@@ -6,7 +6,7 @@ const cors = require('cors')
 const compression = require('compression')
 const path = require('path')
 
-const HttpError = require('./models/http-errors')
+const HttpErrors = require('./config/errors.config')
 const UsersRoutes = require('./routes/users.routes')
 const AuthRoutes = require('./routes/auth.routes')
 const UploadsRoutes = require('./routes/uploads.routes')
@@ -37,7 +37,7 @@ app.get('*', (req, res) => {
 })
 
 app.use(() => {
-  throw new HttpError('Could not find this route.', 404)
+  throw new HttpErrors('Could not find this route.', 404)
 })
 
 const uri = process.env.ATLAS_URI
