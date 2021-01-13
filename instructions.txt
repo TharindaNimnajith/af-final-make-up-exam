@@ -1,0 +1,6 @@
+1. Go to the "backend" folder.
+2. Run the command "npm install" in CLI.
+3. Then run the command "nodemon app" in CLI.
+4. Go to "frontend" folder.
+5. Run the command "npm install" in CLI.
+6. Then run the command "npm start" in CLI.
