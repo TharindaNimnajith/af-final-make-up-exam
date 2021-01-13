@@ -9,6 +9,6 @@ router.get('/getGroups/:id', GroupsController.getGroup)
 router.put('/editGroups', GroupsController.editGroups)
 router.delete('/deleteGroups', GroupsController.deleteGroups)
 router.put('/deleteSubGroupUpdate', GroupsController.deleteSubGroupUpdate)
-router.post('/addNotAvailable/:id',GroupsController.addNotAvailable)
+router.post('/addNotAvailable/:id', GroupsController.addNotAvailable)
 
 module.exports = router

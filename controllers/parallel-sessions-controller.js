@@ -46,26 +46,25 @@ const addParallelSession = async (req, res, next) => {
 }
 
 
-
-const getCategories = async (req,res,next) => {
+const getCategories = async (req, res, next) => {
   console.log("category list eka ganna awa")
 
-    await SubjectModel.distinct("category")
+  await SubjectModel.distinct("category")
     .then(categoryList => {
       console.log(categoryList)
-      res.json({category:categoryList, message: 'got results'});
+      res.json({category: categoryList, message: 'got results'});
     })
     .catch((err) => res.status(400).json('Error: ' + err))
-   
-    
+
+
 }
 
 
-const getCategoryCount = async (req,res,next) => {
+const getCategoryCount = async (req, res, next) => {
 
- 
+
   let catList;
-  
+
 
   const {
     category
@@ -75,26 +74,25 @@ const getCategoryCount = async (req,res,next) => {
     catList = await SubjectModel.findOne({
       category: category
     })
-   
+
     console.log(catList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(catList);
-   
-    
+
+
 }
 
 
+const getSubjectCat = async (req, res, next) => {
 
-const getSubjectCat = async (req,res,next) => {
 
- 
   let catList;
-  
+
 
   const {
     category
@@ -104,17 +102,17 @@ const getSubjectCat = async (req,res,next) => {
     catList = await SubjectModel.find({
       category: category
     })
-   
+
     console.log(catList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(catList);
-   
-    
+
+
 }
 
 exports.addParallelSession = addParallelSession

@@ -122,7 +122,7 @@ const addNotAvailable = async (req, res, next) => {
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
 
-  group.unavailability =  unavailability
+  group.unavailability = unavailability
 
 
   try {

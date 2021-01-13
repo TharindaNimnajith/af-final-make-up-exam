@@ -2,7 +2,16 @@ const HttpError = require('../models/http-errors')
 const SubGroups = require('../models/sub-groups.model')
 
 const createSubGroups = async (req, res, next) => {
-  const {academicYear, academicSemester, academicYearAndSemester, programme, group, groupId, subGroup, subGroupId} = req.body
+  const {
+    academicYear,
+    academicSemester,
+    academicYearAndSemester,
+    programme,
+    group,
+    groupId,
+    subGroup,
+    subGroupId
+  } = req.body
 
   const SubGroupsItem = new SubGroups({
     academicYear,
@@ -131,7 +140,7 @@ const addNotAvailable = async (req, res, next) => {
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
 
-  subgroup.unavailability =  unavailability
+  subgroup.unavailability = unavailability
 
 
   try {

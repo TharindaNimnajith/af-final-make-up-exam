@@ -10,6 +10,6 @@ router.put('/editSubGroups', SubGroupsController.editSubGroups)
 router.delete('/deleteSubGroups', SubGroupsController.deleteSubGroups)
 router.delete('/ deleteAllSubGroupsWithGroId', SubGroupsController.deleteAllSubGroupsWithGroId)
 router.delete('/deleteSubGroupsWithSubId', SubGroupsController.deleteSubGroupsWithSubId)
-router.post('/addNotAvailable/:id',SubGroupsController.addNotAvailable)
+router.post('/addNotAvailable/:id', SubGroupsController.addNotAvailable)
 
 module.exports = router

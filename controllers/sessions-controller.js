@@ -69,7 +69,6 @@ const getSessionLists = async (req, res, next) => {
 }
 
 
-
 const addNotAvailable = async (req, res, next) => {
   let session
 
@@ -88,7 +87,7 @@ const addNotAvailable = async (req, res, next) => {
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
 
-  session.unavailability =  unavailability
+  session.unavailability = unavailability
 
 
   try {
@@ -104,123 +103,120 @@ const addNotAvailable = async (req, res, next) => {
 }
 
 
+const getSessionsCode = async (req, res, next) => {
 
-const  getSessionsCode = async (req,res,next) => {
 
- 
   let sessionList;
-  
+
 
   const {
-     subjectCodeRef
+    subjectCodeRef
   } = req.body
 
   try {
     sessionList = await SessionModel.find({
-      subjectCodeRef:subjectCodeRef
+      subjectCodeRef: subjectCodeRef
     })
-   
+
     console.log(sessionList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(sessionList);
-   
-    
+
+
 }
 
 
-const  getSessionsLec = async (req,res,next) => {
+const getSessionsLec = async (req, res, next) => {
 
- 
+
   let sessionList;
-  
+
 
   const {
-     tagRef
+    tagRef
   } = req.body
 
   try {
     sessionList = await SessionModel.find({
-      tagRef:tagRef
+      tagRef: tagRef
     })
-   
+
     console.log(sessionList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(sessionList);
-   
-    
+
+
 }
 
 
+const getSessionsTut = async (req, res, next) => {
 
-const  getSessionsTut = async (req,res,next) => {
 
- 
   let sessionList;
-  
+
 
   const {
-     tagRef,
-     subjectCodeRef,
-     groupRef
+    tagRef,
+    subjectCodeRef,
+    groupRef
   } = req.body
 
   try {
     sessionList = await SessionModel.find({
-      tagRef:tagRef,
-      subjectCodeRef:subjectCodeRef,
-      groupRef:groupRef
+      tagRef: tagRef,
+      subjectCodeRef: subjectCodeRef,
+      groupRef: groupRef
     })
-   
+
     console.log(sessionList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(sessionList);
-   
-    
+
+
 }
 
 
+const getSessionsTuto = async (req, res, next) => {
 
-const  getSessionsTuto = async (req,res,next) => {
 
- 
   let sessionList;
-  
+
 
   const {
-     tagRef
+    tagRef
   } = req.body
 
   try {
     sessionList = await SessionModel.find({
-      tagRef:tagRef,
-     
+      tagRef: tagRef,
+
     })
-   
+
     console.log(sessionList)
-   
-    
+
+
   } catch (error) {
     console.log(error)
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
   res.status(200).send(sessionList);
-   
-    
+
+
 }
 exports.addSessions = addSessions
 exports.getSession = getSession

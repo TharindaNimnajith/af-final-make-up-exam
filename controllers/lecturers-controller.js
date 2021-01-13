@@ -197,7 +197,7 @@ const addNotAvailable = async (req, res, next) => {
     return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
   }
 
-  lecturer.unavailability =  unavailability
+  lecturer.unavailability = unavailability
 
 
   try {
@@ -211,7 +211,6 @@ const addNotAvailable = async (req, res, next) => {
     message: 'lecturer not available added successfully!'
   })
 }
-
 
 
 exports.addLecturers = addLecturers
