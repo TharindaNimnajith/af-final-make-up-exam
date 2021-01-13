@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const HttpError = require('./models/http-errors')
+const RoomsRoutes = require('./routes/rooms.routes')
 
 require('dotenv').config()
 
@@ -16,6 +17,8 @@ app.use(
 
 app.use(bodyParser.json())
 app.use(cors())
+
+app.use('/rooms', RoomsRoutes)
 
 app.use(() => {
   throw new HttpError('Could not find this route.', 404)

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const autoIncrement = require('mongoose-auto-increment')
 const uniqueValidator = require('mongoose-unique-validator')
 
 const Schema = mongoose.Schema
@@ -19,6 +20,12 @@ const roomTypes = [
 ]
 
 const RoomsSchema = new Schema({
+  roomId: {
+    type: Number,
+    required: false,
+    unique: true,
+    trim: true
+  },
   roomName: {
     type: String,
     required: true,
@@ -71,5 +78,14 @@ const RoomsSchema = new Schema({
 })
 
 RoomsSchema.plugin(uniqueValidator)
+
+autoIncrement.initialize(mongoose.connection)
+
+RoomsSchema.plugin(autoIncrement.plugin, {
+  model: 'Rooms',
+  field: 'roomId',
+  startAt: 1000,
+  incrementBy: 1
+})
 
 module.exports = mongoose.model('Rooms', RoomsSchema)
