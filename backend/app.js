@@ -2,8 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
+const compression = require('compression')
+const helmet = require('helmet')
+const path = require('path')
 const HttpError = require('./models/http-errors')
+// const UsersRoutes = require('./routes/users.routes')
+// const AuthRoutes = require('./routes/auth.routes')
+// const UploadsRoutes = require('./routes/uploads.routes')
 const RoomsRoutes = require('./routes/rooms.routes')
 
 require('dotenv').config()
@@ -17,9 +22,20 @@ app.use(
 )
 
 app.use(bodyParser.json())
+app.use(compression())
 app.use(cors())
+app.use(helmet())
 
+app.use('/public', express.static(path.join(__dirname, 'public')))
+
+// app.use('/users', UsersRoutes)
+// app.use('/auth', AuthRoutes)
+// app.use('/uploads', UploadsRoutes)
 app.use('/rooms', RoomsRoutes)
+
+app.get('*', (req, res) => {
+  res.status(200).send('Server is running');
+})
 
 app.use(() => {
   throw new HttpError('Could not find this route.', 404)
