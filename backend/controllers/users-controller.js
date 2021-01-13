@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt')
+
 const HttpErrorsModel = require('../models/http-errors')
 const UserModel = require('../models/users.model')
 
@@ -32,7 +34,54 @@ const addUser = async (req, res, next) => {
     firstName,
     lastName,
     email,
+    password: bcrypt.hashSync(password, 10)
+  })
+
+  try {
+    await newUser.save()
+  } catch (error) {
+    console.log(error)
+    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+  }
+
+  res.status(201).send({
+    message: 'New user added successfully!'
+  })
+}
+
+const addAdmin = async (req, res, next) => {
+  let existingUser
+
+  let {
+    firstName,
+    lastName,
+    email,
     password
+  } = req.body
+
+  try {
+    existingUser = await UserModel.findOne({
+      email: email
+    })
+  } catch (error) {
+    console.log(error)
+    return next(new HttpErrorsModel('Unexpected internal server error occurred, please try again later.', 500))
+  }
+
+  if (existingUser) {
+    res.json({
+      exists: true,
+      message: 'A user with the same email already exists.'
+    })
+    return next(new HttpErrorsModel('A user with the same email already exists.', 409))
+  }
+
+  const newUser = new UserModel({
+    firstName,
+    lastName,
+    email,
+    password: bcrypt.hashSync(password, 10),
+    userType: 'Admin'
   })
 
   try {
@@ -59,7 +108,8 @@ const updateUser = async (req, res, next) => {
     firstName,
     lastName,
     email,
-    password
+    password,
+    userType
   } = req.body
 
   try {
@@ -89,7 +139,8 @@ const updateUser = async (req, res, next) => {
   user.firstName = firstName
   user.lastName = lastName
   user.email = email
-  user.password = password
+  user.password = bcrypt.hashSync(password, 10)
+  user.userType = userType
 
   try {
     await user.save()
@@ -159,6 +210,7 @@ const getUserList = async (req, res, next) => {
 }
 
 exports.addUser = addUser
+exports.addAdmin = addAdmin
 exports.updateUser = updateUser
 exports.deleteUser = deleteUser
 exports.getUser = getUser

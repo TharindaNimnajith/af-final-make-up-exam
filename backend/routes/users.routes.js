@@ -4,6 +4,7 @@ const router = express.Router()
 const UsersController = require('../controllers/users-controller')
 
 router.post('/users', UsersController.addUser)
+router.post('/admin', UsersController.addAdmin)
 router.put('/users/:id', UsersController.updateUser)
 router.delete('/users/:id', UsersController.deleteUser)
 router.get('/users/:id', UsersController.getUser)
