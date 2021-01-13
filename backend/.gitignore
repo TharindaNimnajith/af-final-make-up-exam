@@ -18,7 +18,6 @@
 /.idea
 
 # misc
-/notes
 .DS_Store
 
 #.env
