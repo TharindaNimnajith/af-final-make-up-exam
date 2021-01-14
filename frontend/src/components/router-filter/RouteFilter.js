@@ -8,6 +8,7 @@ const RouteFilter = ({component: Component, isProtected, ...rest}) => {
 
   useEffect(() => {
     const localeStorageData = checkUserInLocalStorage()
+
     if (localeStorageData.status === true) {
       setLocalStorageItem(localeStorageData.result)
       setAuth(true)

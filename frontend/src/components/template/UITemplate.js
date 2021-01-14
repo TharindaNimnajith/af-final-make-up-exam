@@ -39,8 +39,7 @@ class UITemplate extends Component {
     return (
       <Fragment>
         {
-          (
-            this.state.loader === true) ? (
+          (this.state.loader === true) ? (
             <Loader/>
           ) : null
         }
