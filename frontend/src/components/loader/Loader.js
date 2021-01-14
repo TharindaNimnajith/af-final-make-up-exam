@@ -1,19 +1,15 @@
-import React from 'react';
-import {Spinner} from 'reactstrap';
+import React from 'react'
+import {Spinner} from 'reactstrap'
+import './loader.css'
 
-import "./loader.css";
-
-/**
- * Renders the preloader
- */
 const Loader = () => {
   return (
-    <div className="preloader">
-      <div className="status">
-        <Spinner color={"primary"}/>
+    <div className='preloader'>
+      <div className='status'>
+        <Spinner color={'primary'}/>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

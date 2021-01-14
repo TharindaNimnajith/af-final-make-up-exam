@@ -1,15 +1,13 @@
-import React, {Component, Fragment} from "react";
-import Swal from "sweetalert2";
-
-import "./ui-template.css";
-import Header from "./includes/Header";
-import Footer from "./includes/Footer";
-import Loader from "../loader/Loader";
-
+import React, {Component, Fragment} from 'react'
+import Swal from 'sweetalert2'
+import Loader from '../loader/Loader'
+import Header from './includes/Header'
+import Footer from './includes/Footer'
+import './ui-template.css'
 
 class UITemplate extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       loader: false
@@ -41,13 +39,12 @@ class UITemplate extends Component {
     return (
       <Fragment>
         {
-          (this.state.loader === true) ? (
+          (
+            this.state.loader === true) ? (
             <Loader/>
           ) : null
         }
-
         <Header/>
-
         {
           React.Children.map(this.props.children, (child) => {
             if (child) {
@@ -59,11 +56,10 @@ class UITemplate extends Component {
             }
           })
         }
-
         <Footer/>
       </Fragment>
     )
   }
 }
 
-export default UITemplate;
+export default UITemplate
