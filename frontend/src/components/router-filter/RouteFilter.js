@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Redirect, Route} from "react-router-dom";
 
-import {checkUserInLocalStorage, setLocalStorageItem} from "../../helpers/common.helpers";
+import {checkUserInLocalStorage, setLocalStorageItem} from "../../helpers/local-storage.helpers";
 import Loader from "../loader/Loader";
 
 

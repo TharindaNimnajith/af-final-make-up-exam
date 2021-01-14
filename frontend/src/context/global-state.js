@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {AppContext} from './app-context';
+import React, {useState} from 'react'
+import {AppContext} from './app-context'
 
 export const GlobalState = props => {
-  const [accessToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState('')
 
   const login = accessToken => {
-    setAccessToken(accessToken);
-  };
+    setAccessToken(accessToken)
+  }
 
   return (
     <AppContext.Provider
@@ -16,5 +16,5 @@ export const GlobalState = props => {
       }}>
       {props.children}
     </AppContext.Provider>
-  );
-};
+  )
+}
