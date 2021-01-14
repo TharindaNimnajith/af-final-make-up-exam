@@ -2,15 +2,15 @@ import React, {Component, Fragment} from 'react'
 import axios from 'axios'
 import get from 'lodash.get'
 import {dateToString} from '../../helpers/common.helpers'
-import UITemplate from '../../components/template/UITemplate'
-import ButtonComponent from '../../components/button/Button'
+import BasicTemplate from '../../templates/basic-template/basic-template'
+import ButtonComponent from '../../components/button/button'
 import './book.css'
 
 const Book = (props) => {
   return (
-    <UITemplate>
+    <BasicTemplate>
       <BookBody {...props} />
-    </UITemplate>
+    </BasicTemplate>
   )
 }
 

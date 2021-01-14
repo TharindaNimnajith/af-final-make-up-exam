@@ -4,9 +4,9 @@ import get from 'lodash.get'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import {isEmpty} from '../../helpers/common.helpers'
-import TextField from '../../components/text-field/TextField'
-import ButtonComponent from '../../components/button/Button'
-import Loader from '../../components/loader/Loader'
+import TextField from '../../components/text-field/text-field'
+import ButtonComponent from '../../components/button/button'
+import Loader from '../../components/loader/loader'
 import '../login/login.css'
 
 class Register extends Component {

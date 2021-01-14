@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import UITemplate from '../../components/template/UITemplate'
-import ButtonComponent from '../../components/button/Button'
-import './homepage.css'
+import BasicTemplate from '../../templates/basic-template/basic-template'
+import ButtonComponent from '../../components/button/button'
+import './home.css'
 
-const Homepage = (props) => {
+const Home = (props) => {
   return (
-    <UITemplate>
+    <BasicTemplate>
       <HomepageBody {...props} />
-    </UITemplate>
+    </BasicTemplate>
   )
 }
 
@@ -96,4 +96,4 @@ class HomepageBody extends Component {
   }
 }
 
-export default Homepage
+export default Home

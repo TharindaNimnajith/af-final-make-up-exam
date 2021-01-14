@@ -6,9 +6,9 @@ import axios from 'axios'
 import {authStoreKey} from '../../configs/config'
 import {isEmpty} from '../../helpers/common.helpers'
 import {setLocalStorageItem} from '../../helpers/local-storage.helpers'
-import TextField from '../../components/text-field/TextField'
-import ButtonComponent from '../../components/button/Button'
-import Loader from '../../components/loader/Loader'
+import TextField from '../../components/text-field/text-field'
+import ButtonComponent from '../../components/button/button'
+import Loader from '../../components/loader/loader'
 import './login.css'
 
 class Login extends Component {

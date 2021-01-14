@@ -9,11 +9,10 @@ export const GlobalState = props => {
   }
 
   return (
-    <AppContext.Provider
-      value={{
-        accessToken: accessToken,
-        login: login
-      }}>
+    <AppContext.Provider value={{
+      accessToken: accessToken,
+      login: login
+    }}>
       {props.children}
     </AppContext.Provider>
   )

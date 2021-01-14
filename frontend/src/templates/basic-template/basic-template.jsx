@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react'
 import Swal from 'sweetalert2'
-import Loader from '../loader/Loader'
-import Header from './includes/Header'
-import Footer from './includes/Footer'
-import './ui-template.css'
+import Loader from '../../components/loader/loader'
+import Header from '../../components/header/header'
+import Footer from '../../components/footer/footer'
+import './basic-template.css'
 
-class UITemplate extends Component {
+class BasicTemplate extends Component {
   constructor(props) {
     super(props)
 
@@ -61,4 +61,4 @@ class UITemplate extends Component {
   }
 }
 
-export default UITemplate
+export default BasicTemplate

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import {GlobalState} from './context/global-state';
+import {GlobalState} from './context-api/global-state';
 import reportWebVitals from './reportWebVitals'
 import App from './App'
 import './index.css'
