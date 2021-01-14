@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react'
 import {BrowserRouter, Switch} from 'react-router-dom'
-import Login from './modules/login/Login'
-import Register from './modules/register/Register'
-import Homepage from './modules/homepage/Homepage'
-import Book from './modules/book/Book'
-import RouteFilter from './components/router-filter/RouteFilter'
+import Login from './modules/login/login'
+import Register from './modules/register/register'
+import Home from './modules/home/home'
+import Book from './modules/book/book'
+import RouteFilter from './route-filter/route-filter'
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
           <RouteFilter path={'/'}
                        exact={true}
                        isProtected={true}
-                       component={Homepage}/>
+                       component={Home}/>
           <RouteFilter path={'/login'}
                        exact={true}
                        isProtected={false}

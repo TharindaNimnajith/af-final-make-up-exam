@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import {Nav, Navbar, NavbarBrand, NavbarText} from 'reactstrap'
 import {withRouter} from 'react-router-dom'
-import {removeFromLocalStorage} from '../../../helpers/local-storage.helpers'
-import {authStoreKey} from '../../../configs/config'
+import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
+import {authStoreKey} from '../../configs/config'
 
 class Header extends Component {
   logOutUserFn = () => {

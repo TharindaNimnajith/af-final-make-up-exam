@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Redirect, Route} from 'react-router-dom'
-import {checkUserInLocalStorage, setLocalStorageItem} from '../../helpers/local-storage.helpers'
-import Loader from '../loader/Loader'
+import {checkUserInLocalStorage, setLocalStorageItem} from '../helpers/local-storage.helpers'
+import Loader from '../components/loader/loader'
 
 const RouteFilter = ({component: Component, isProtected, ...rest}) => {
   const [isAuth, setAuth] = useState(null)
