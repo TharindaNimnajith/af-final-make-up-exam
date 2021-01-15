@@ -19,37 +19,43 @@ const TextField = (
   }
 ) => {
   return (
-    <Fragment>
-      <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
-        <Label className='mb-1 mt-2'>
-          {labelText}
-          {
-            isRequired ? (
-              <span className='error'>
+    <div>
+      <Fragment>
+        <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
+          <div>
+            <Label className='mb-1 mt-2'>
+              {labelText}
+              {
+                isRequired ? (
+                  <span className='error'>
                 &nbsp;*
               </span>
-            ) : null
-          }
-        </Label>
-        <Input type={type}
-               className={errorText ? 'is-invalid' : ''}
-               name={name}
-               placeholder={placeholder}
-               value={value}
-               onChange={(event) => {
-                 onChangeFn({
-                   value: event.target.value,
-                   name: name,
-                   eventInfo: event
-                 })
-               }}/>
-        <small>
-          {
-            errorText ? errorText : helperText
-          }
-        </small>
-      </FormGroup>
-    </Fragment>
+                ) : null
+              }
+            </Label>
+          </div>
+          <div>
+            <Input type={type}
+                   className={errorText ? 'is-invalid' : ''}
+                   name={name}
+                   placeholder={placeholder}
+                   value={value}
+                   onChange={(event) => {
+                     onChangeFn({
+                       value: event.target.value,
+                       name: name,
+                       eventInfo: event
+                     })
+                   }}/>
+            <small>
+              {
+                errorText ? errorText : helperText
+              }
+            </small>
+          </div>
+        </FormGroup>
+      </Fragment>
+    </div>
   )
 }
 

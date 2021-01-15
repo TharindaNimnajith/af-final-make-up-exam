@@ -46,19 +46,23 @@ const LoginForm = () => {
           </div>
           <CardBody className='p-4'>
             <div className='p-3'>
-              <TextField isRequired={true}
-                         labelText={'Email'}
-                         name={'email'}
-                         value={email}
-                         errorText={errorEmail}
-                         onChangeFn={(event) => onChangeEmail(event)}/>
-              <TextField isRequired={true}
-                         labelText={'Password'}
-                         type={'password'}
-                         name={'password'}
-                         value={password}
-                         errorText={errorPassword}
-                         onChangeFn={(event) => onChangePassword(event)}/>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Email'}
+                           name={'email'}
+                           value={email}
+                           errorText={errorEmail}
+                           onChangeFn={(event) => onChangeEmail(event)}/>
+              </div>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Password'}
+                           type={'password'}
+                           name={'password'}
+                           value={password}
+                           errorText={errorPassword}
+                           onChangeFn={(event) => onChangePassword(event)}/>
+              </div>
               <div className='text-center mt-4 mb-3'>
                 <ButtonComponent btnText={'Login'}
                                  isFullWidth={false}

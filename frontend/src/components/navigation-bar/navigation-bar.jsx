@@ -6,36 +6,46 @@ const NavigationBar = () => {
   return (
     <div className='sidebar'>
       <Nav vertical>
-        <NavItem>
-          <NavLink href='/'>
-            <i className='fa fa-fw fa-home m-1'/>
-            <label>Navigation Link</label>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href='/'>
-            <i className='fa fa-fw fa-home m-1'/>
-            <label>Navigation Link</label>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href='/'>
-            <i className='fa fa-fw fa-home m-1'/>
-            <label>Navigation Link</label>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href='/'>
-            <i className='fa fa-fw fa-home m-1'/>
-            <label>Navigation Link</label>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href='/'>
-            <i className='fa fa-fw fa-home m-1'/>
-            <label>Navigation Link</label>
-          </NavLink>
-        </NavItem>
+        <div>
+          <NavItem>
+            <NavLink href='/'>
+              <i className='fa fa-fw fa-home m-1'/>
+              <label>Navigation Link</label>
+            </NavLink>
+          </NavItem>
+        </div>
+        <div>
+          <NavItem>
+            <NavLink href='/'>
+              <i className='fa fa-fw fa-home m-1'/>
+              <label>Navigation Link</label>
+            </NavLink>
+          </NavItem>
+        </div>
+        <div>
+          <NavItem>
+            <NavLink href='/'>
+              <i className='fa fa-fw fa-home m-1'/>
+              <label>Navigation Link</label>
+            </NavLink>
+          </NavItem>
+        </div>
+        <div>
+          <NavItem>
+            <NavLink href='/'>
+              <i className='fa fa-fw fa-home m-1'/>
+              <label>Navigation Link</label>
+            </NavLink>
+          </NavItem>
+        </div>
+        <div>
+          <NavItem>
+            <NavLink href='/'>
+              <i className='fa fa-fw fa-home m-1'/>
+              <label>Navigation Link</label>
+            </NavLink>
+          </NavItem>
+        </div>
       </Nav>
     </div>
   )

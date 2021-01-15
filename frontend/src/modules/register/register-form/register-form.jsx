@@ -55,9 +55,9 @@ const RegisterForm = () => {
           <Loader/>
         ) : null
       }
-      <div className='login-wrapper'>
+      <div className='register-wrapper'>
         <Card className='overflow-hidden'>
-          <div className='login-header'>
+          <div className='register-header'>
             <div className='text-primary text-center p-4'>
               <h1 className='text-white font-size-20 text-uppercase'>
                 Register
@@ -67,38 +67,48 @@ const RegisterForm = () => {
           </div>
           <CardBody className='p-4'>
             <div className='p-3'>
-              <TextField isRequired={true}
-                         labelText={'First Name'}
-                         name={'firstName'}
-                         value={firstName}
-                         errorText={errorFirstName}
-                         onChangeFn={(event) => onChangeFirstName(event)}/>
-              <TextField isRequired={true}
-                         labelText={'Last Name'}
-                         name={'lastName'}
-                         value={lastName}
-                         errorText={errorLastName}
-                         onChangeFn={(event) => onChangeLastName(event)}/>
-              <TextField isRequired={true}
-                         labelText={'Email'}
-                         name={'email'}
-                         value={email}
-                         errorText={errorEmail}
-                         onChangeFn={(event) => onChangeEmail(event)}/>
-              <TextField isRequired={true}
-                         labelText={'Password'}
-                         type={'password'}
-                         name={'password'}
-                         value={password}
-                         errorText={errorPassword}
-                         onChangeFn={(event) => onChangePassword(event)}/>
-              <TextField isRequired={true}
-                         labelText={'Confirm Password'}
-                         type={'confirmPassword'}
-                         name={'confirmPassword'}
-                         value={confirmPassword}
-                         errorText={errorConfirmPassword}
-                         onChangeFn={(event) => onChangeConfirmPassword(event)}/>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'First Name'}
+                           name={'firstName'}
+                           value={firstName}
+                           errorText={errorFirstName}
+                           onChangeFn={(event) => onChangeFirstName(event)}/>
+              </div>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Last Name'}
+                           name={'lastName'}
+                           value={lastName}
+                           errorText={errorLastName}
+                           onChangeFn={(event) => onChangeLastName(event)}/>
+              </div>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Email'}
+                           name={'email'}
+                           value={email}
+                           errorText={errorEmail}
+                           onChangeFn={(event) => onChangeEmail(event)}/>
+              </div>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Password'}
+                           type={'password'}
+                           name={'password'}
+                           value={password}
+                           errorText={errorPassword}
+                           onChangeFn={(event) => onChangePassword(event)}/>
+              </div>
+              <div>
+                <TextField isRequired={true}
+                           labelText={'Confirm Password'}
+                           type={'confirmPassword'}
+                           name={'confirmPassword'}
+                           value={confirmPassword}
+                           errorText={errorConfirmPassword}
+                           onChangeFn={(event) => onChangeConfirmPassword(event)}/>
+              </div>
               <div className='text-center mt-4 mb-3'>
                 <ButtonComponent btnText={'Register'}
                                  isFullWidth={false}

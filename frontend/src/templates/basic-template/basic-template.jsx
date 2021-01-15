@@ -7,12 +7,14 @@ const BasicTemplate = (props) => {
   return (
     <Fragment>
       <Header/>
-      {
-        React.Children.map(props.children, (child) => {
-          if (child)
-            return React.cloneElement(props.children)
-        })
-      }
+      <div>
+        {
+          React.Children.map(props.children, (child) => {
+            if (child)
+              return React.cloneElement(props.children)
+          })
+        }
+      </div>
       <Footer/>
     </Fragment>
   )

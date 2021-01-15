@@ -19,24 +19,34 @@ const Header = (props) => {
   }
 
   return (
-    <Fragment>
-      <Navbar className='header d-flex justify-content-between w-100'
-              expand='md'>
-        <NavbarBrand>
-          <i className='icon fas fa-bars ms-4'
-             onClick={onNavBarDisplay}/>
-        </NavbarBrand>
-        <NavbarBrand>
-          <i className='icon fas fa-sign-out-alt'
-             onClick={onSignOut}/>
-        </NavbarBrand>
-      </Navbar>
-      {
-        display ? (
-          <NavigationBar/>
-        ) : null
-      }
-    </Fragment>
+    <div>
+      <Fragment>
+        <div>
+          <Navbar className='header d-flex justify-content-between w-100'
+                  expand='md'>
+            <div>
+              <NavbarBrand>
+                <i className='icon fas fa-bars ms-4'
+                   onClick={onNavBarDisplay}/>
+              </NavbarBrand>
+            </div>
+            <div>
+              <NavbarBrand>
+                <i className='icon fas fa-sign-out-alt'
+                   onClick={onSignOut}/>
+              </NavbarBrand>
+            </div>
+          </Navbar>
+        </div>
+        {
+          display ? (
+            <div>
+              <NavigationBar/>
+            </div>
+          ) : null
+        }
+      </Fragment>
+    </div>
   )
 }
 

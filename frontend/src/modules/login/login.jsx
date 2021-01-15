@@ -1,13 +1,22 @@
 import React from 'react'
-import BasicTemplate from '../../templates/basic-template/basic-template'
+import Header from '../../components/header/header'
+import Footer from '../../components/footer/footer'
 import LoginForm from './login-form/login-form'
 import './login.css'
 
 const Login = () => {
   return (
-    <BasicTemplate>
-      <LoginForm/>
-    </BasicTemplate>
+    <div>
+      <div>
+        <Header/>
+      </div>
+      <div>
+        <LoginForm/>
+      </div>
+      <div>
+        <Footer/>
+      </div>
+    </div>
   )
 }
 

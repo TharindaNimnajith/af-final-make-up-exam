@@ -19,26 +19,28 @@ const RouteFilter = ({component: Component, isProtected, ...rest}) => {
   }, [Component])
 
   return (
-    <Route {...rest}
-           render={(props) => {
-             if (isProtected === true && isAuth === null) {
-               return (
-                 <Loader/>
-               )
-             } else if (isProtected === true && isAuth === false) {
-               return (
-                 <Redirect to={'/login'}/>
-               )
-             } else if (isProtected === false && isAuth === true) {
-               return (
-                 <Redirect to={'/'}/>
-               )
-             } else if (isProtected === false || isAuth === true) {
-               return (
-                 <Component {...props} />
-               )
-             }
-           }}/>
+    <div>
+      <Route {...rest}
+             render={(props) => {
+               if (isProtected === true && isAuth === null) {
+                 return (
+                   <Loader/>
+                 )
+               } else if (isProtected === true && isAuth === false) {
+                 return (
+                   <Redirect to={'/login'}/>
+                 )
+               } else if (isProtected === false && isAuth === true) {
+                 return (
+                   <Redirect to={'/'}/>
+                 )
+               } else if (isProtected === false || isAuth === true) {
+                 return (
+                   <Component {...props} />
+                 )
+               }
+             }}/>
+    </div>
   )
 }
 

@@ -8,24 +8,28 @@ import './App.css'
 
 const App = () => {
   return (
-    <Fragment>
-      <BrowserRouter>
-        <Switch>
-          <RouteFilter path={'/'}
-                       exact={true}
-                       isProtected={true}
-                       component={Home}/>
-          <RouteFilter path={'/login'}
-                       exact={true}
-                       isProtected={false}
-                       component={Login}/>
-          <RouteFilter path={'/register'}
-                       exact={true}
-                       isProtected={false}
-                       component={Register}/>
-        </Switch>
-      </BrowserRouter>
-    </Fragment>
+    <div>
+      <Fragment>
+        <div>
+          <BrowserRouter>
+            <Switch>
+              <RouteFilter path={'/'}
+                           exact={true}
+                           isProtected={true}
+                           component={Home}/>
+              <RouteFilter path={'/login'}
+                           exact={true}
+                           isProtected={false}
+                           component={Login}/>
+              <RouteFilter path={'/register'}
+                           exact={true}
+                           isProtected={false}
+                           component={Register}/>
+            </Switch>
+          </BrowserRouter>
+        </div>
+      </Fragment>
+    </div>
   )
 }
 
