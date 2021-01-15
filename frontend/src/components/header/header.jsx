@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import {withRouter} from 'react-router-dom'
-import {Nav, Navbar, NavbarBrand} from 'reactstrap'
+import {Navbar, NavbarBrand} from 'reactstrap'
 import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
 import {authStoreKey} from '../../configs/config'
 import NavigationBar from '../navigation-bar/navigation-bar'
@@ -20,21 +20,17 @@ const Header = (props) => {
 
   return (
     <Fragment>
-      <div className='flex'>
-        <Navbar className='header'
-                expand='md'>
-          <NavbarBrand>
-            <i className='icon fas fa-bars ms-4'
-               onClick={onNavBarDisplay}/>
-          </NavbarBrand>
-          <Nav className='mr-auto'
-               navbar/>
-          <NavbarBrand>
-            <i className='icon fas fa-sign-out-alt position-relative align-content-end'
-               onClick={onSignOut}/>
-          </NavbarBrand>
-        </Navbar>
-      </div>
+      <Navbar className='header d-flex justify-content-between w-100'
+              expand='md'>
+        <NavbarBrand>
+          <i className='icon fas fa-bars ms-4'
+             onClick={onNavBarDisplay}/>
+        </NavbarBrand>
+        <NavbarBrand>
+          <i className='icon fas fa-sign-out-alt'
+             onClick={onSignOut}/>
+        </NavbarBrand>
+      </Navbar>
       {
         display ? (
           <NavigationBar/>

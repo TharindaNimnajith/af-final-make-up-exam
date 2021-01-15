@@ -24,9 +24,7 @@ const TextField = (
           {labelText}
           {
             isRequired ? (
-              <span style={{
-                color: 'red'
-              }}>
+              <span className='error'>
                 &nbsp;*
               </span>
             ) : null
