@@ -19,7 +19,7 @@ const ButtonComponent = (
 ) => {
   return (
     <div className={elementWrapperStyle}>
-      <Button className={`${elementStyle} button-custom`}
+      <Button className={`${elementStyle} button-custom text-uppercase`}
               color={btnColor}
               size={btnSize}
               block={isFullWidth}

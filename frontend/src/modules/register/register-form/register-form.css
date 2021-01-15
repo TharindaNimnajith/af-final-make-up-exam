@@ -1,0 +1,31 @@
+.register-wrapper {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+}
+
+.register-header {
+    background-color: #626ed4 !important;
+}
+
+.register-icon {
+    color: white;
+    font-size: xx-large;
+}
+
+.register-btn {
+    min-width: max-content;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.login-link:hover {
+    cursor: pointer;
+    color: #183475;
+}
+
+.login-link:active {
+    color: #183475;
+}

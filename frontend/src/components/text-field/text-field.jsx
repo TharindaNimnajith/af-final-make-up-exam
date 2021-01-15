@@ -21,7 +21,7 @@ const TextField = (
   return (
     <Fragment>
       <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
-        <Label className='mb-1 mt-3'>
+        <Label className='mb-1 mt-2'>
           {labelText}
           {
             isRequired ? (
