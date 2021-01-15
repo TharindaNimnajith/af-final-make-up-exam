@@ -39,9 +39,11 @@ const LoginForm = () => {
           <div className='login-header'>
             <div className='text-primary text-center p-4'>
               <h1 className='text-white font-size-20 text-uppercase'>
-                Login
+                <i className='login-icon fas fa-users mt-2'/>
+                <span className='ms-3'>
+                  Login
+                </span>
               </h1>
-              <i className='login-icon fas fa-users mt-2'/>
             </div>
           </div>
           <CardBody className='p-4'>

@@ -60,9 +60,11 @@ const RegisterForm = () => {
           <div className='register-header'>
             <div className='text-primary text-center p-4'>
               <h1 className='text-white font-size-20 text-uppercase'>
-                Register
+                <i className='register-icon fas fa-user-plus mt-2'/>
+                <span className='ms-3'>
+                  Register
+                </span>
               </h1>
-              <i className='register-icon fas fa-user-plus mt-2'/>
             </div>
           </div>
           <CardBody className='p-4'>

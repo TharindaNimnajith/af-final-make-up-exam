@@ -20,8 +20,8 @@ const Header = (props) => {
 
   return (
     <div>
-      <Fragment>
-        <div>
+      <div>
+        <Fragment>
           <Navbar className='header d-flex justify-content-between w-100'
                   expand='md'>
             <div>
@@ -37,15 +37,15 @@ const Header = (props) => {
               </NavbarBrand>
             </div>
           </Navbar>
-        </div>
+        </Fragment>
+      </div>
+      <div>
         {
           display ? (
-            <div>
-              <NavigationBar/>
-            </div>
+            <NavigationBar/>
           ) : null
         }
-      </Fragment>
+      </div>
     </div>
   )
 }
