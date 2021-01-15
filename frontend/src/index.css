@@ -10,3 +10,9 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@media screen and (min-resolution: 125dpi) {
+    body {
+        zoom: 0.8;
+    }
+}

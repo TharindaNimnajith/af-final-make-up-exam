@@ -10,10 +10,10 @@ const Login = () => {
       <div>
         <Header/>
       </div>
-      <div>
+      <div className='container login-form'>
         <LoginForm/>
       </div>
-      <div>
+      <div id='footer'>
         <Footer/>
       </div>
     </div>

@@ -49,7 +49,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='container-fluid'>
+    <div>
       {
         loader ? (
           <Loader/>
