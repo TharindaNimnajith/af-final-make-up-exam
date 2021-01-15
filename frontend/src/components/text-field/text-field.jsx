@@ -3,18 +3,20 @@ import {FormGroup, Input, Label} from 'reactstrap'
 
 const empty = () => undefined
 
-const TextField = ({
-                     elementWrapperStyle = '',
-                     labelText = '',
-                     type = 'text',
-                     name = '',
-                     isRequired = false,
-                     value = '',
-                     placeholder = '',
-                     errorText = '',
-                     helperText = '',
-                     onChangeFn = empty
-                   }) => {
+const TextField = (
+  {
+    elementWrapperStyle = '',
+    labelText = '',
+    type = 'text',
+    name = '',
+    isRequired = false,
+    value = '',
+    placeholder = '',
+    errorText = '',
+    helperText = '',
+    onChangeFn = empty
+  }
+) => {
   return (
     <Fragment>
       <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>

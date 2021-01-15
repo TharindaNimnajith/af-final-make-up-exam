@@ -1,30 +1,29 @@
 import React, {Fragment} from 'react'
 import {withRouter} from 'react-router-dom'
-import {Nav, Navbar, NavbarBrand, NavbarText} from 'reactstrap'
+import {Nav, Navbar, NavbarBrand} from 'reactstrap'
 import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
 import {authStoreKey} from '../../configs/config'
+import './header.css'
 
-const Header = () => {
-  const logOutUserFn = () => {
+const Header = (props) => {
+  const onSignOut = () => {
     removeFromLocalStorage(authStoreKey)
-    this.props.history.push('/')
+    props.history.push('/')
   }
 
   return (
     <Fragment>
       <Navbar expand='md'
-              className={'nav-bar'}>
+              className={'header'}>
         <NavbarBrand>
-          <img src={'https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png'}
-               height='35'
-               alt='logo'/>
+          <i className='icon fas fa-bars'/>
         </NavbarBrand>
         <Nav className='mr-auto'
              navbar/>
-        <NavbarText className={'log-out-btn'}
-                    onClick={logOutUserFn}>
-          Log Out
-        </NavbarText>
+        <NavbarBrand>
+          <i className='icon fas fa-sign-out-alt'
+             onClick={onSignOut}/>
+        </NavbarBrand>
       </Navbar>
     </Fragment>
   )

@@ -23,7 +23,10 @@ const ButtonComponent = ({
               block={isFullWidth}
               outline={isOutline}
               name={btnName}
-              onClick={(event) => onClickFn({name: btnName, eventInfo: event})}>
+              onClick={(event) => onClickFn({
+                name: btnName,
+                eventInfo: event
+              })}>
         {btnText}
       </Button>
     </div>
