@@ -1,14 +1,21 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {withRouter} from 'react-router-dom'
 import {Nav, Navbar, NavbarBrand} from 'reactstrap'
 import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
 import {authStoreKey} from '../../configs/config'
+import NavigationBar from '../navigation-bar/navigation-bar'
 import './header.css'
 
 const Header = (props) => {
+  const [display, setDisplay] = useState(false)
+
   const onSignOut = () => {
     removeFromLocalStorage(authStoreKey)
     props.history.push('/')
+  }
+
+  const onNavBarDisplay = () => {
+    setDisplay(!display)
   }
 
   return (
@@ -16,7 +23,8 @@ const Header = (props) => {
       <Navbar expand='md'
               className={'header'}>
         <NavbarBrand>
-          <i className='icon fas fa-bars'/>
+          <i className='icon fas fa-bars'
+             onClick={onNavBarDisplay}/>
         </NavbarBrand>
         <Nav className='mr-auto'
              navbar/>
@@ -25,6 +33,11 @@ const Header = (props) => {
              onClick={onSignOut}/>
         </NavbarBrand>
       </Navbar>
+      {
+        display ? (
+          <NavigationBar/>
+        ) : null
+      }
     </Fragment>
   )
 }
