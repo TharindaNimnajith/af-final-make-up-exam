@@ -51,6 +51,7 @@ const LoginForm = () => {
               <div>
                 <TextField isRequired={true}
                            labelText={'Email'}
+                           type={'email'}
                            name={'email'}
                            value={email}
                            errorText={errorEmail}

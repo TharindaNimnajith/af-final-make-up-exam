@@ -88,6 +88,7 @@ const RegisterForm = () => {
               <div>
                 <TextField isRequired={true}
                            labelText={'Email'}
+                           type={'email'}
                            name={'email'}
                            value={email}
                            errorText={errorEmail}
@@ -105,7 +106,7 @@ const RegisterForm = () => {
               <div>
                 <TextField isRequired={true}
                            labelText={'Confirm Password'}
-                           type={'confirmPassword'}
+                           type={'password'}
                            name={'confirmPassword'}
                            value={confirmPassword}
                            errorText={errorConfirmPassword}
