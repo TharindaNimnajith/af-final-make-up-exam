@@ -18,7 +18,18 @@ const TextField = ({
   return (
     <Fragment>
       <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
-        <Label>{labelText} {isRequired ? (<span style={{color: 'red'}}>*</span>) : null}</Label>
+        <Label>
+          {
+            labelText
+          }
+          {
+            isRequired ? (
+              <span style={{color: 'red'}}>
+                &nbsp;*
+              </span>
+            ) : null
+          }
+        </Label>
         <Input type={type}
                className={errorText ? 'is-invalid' : ''}
                name={name}

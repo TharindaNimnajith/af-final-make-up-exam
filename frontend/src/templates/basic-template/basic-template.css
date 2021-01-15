@@ -1,1 +1,24 @@
-/**/
+.nav-bar {
+  background-color: #333547 !important;
+}
+
+.log-out-btn {
+  font-size: 17px !important;
+  color: #FFFFFF;
+  font-weight: bold;
+  cursor: pointer !important;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333547 !important;
+  color: white;
+}
+
+.footer > div > h6 {
+  font-size: 14px !important;
+}
