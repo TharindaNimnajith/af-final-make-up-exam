@@ -1,15 +1,31 @@
-.loginWrapper {
+.login-wrapper {
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
 }
 
-.loginHeader {
+.login-header {
     background-color: #626ed4 !important;
 }
 
-.loginBtn {
-    width: 110px;
+.login-icon {
+    color: white;
+    font-size: xxx-large;
+}
+
+.login-btn {
+    min-width: max-content;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.register-link:hover {
+    cursor: pointer;
+    color: #183475;
+}
+
+.register-link:active {
+    color: #183475;
 }

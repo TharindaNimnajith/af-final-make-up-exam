@@ -7,6 +7,9 @@ import ButtonComponent from '../../../components/button/button'
 import './login-form.css'
 
 const LoginForm = () => {
+  let errorEmail = ''
+  let errorPassword = ''
+
   const [loader, setLoader] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,19 +34,14 @@ const LoginForm = () => {
           <Loader/>
         ) : null
       }
-      <div className='loginWrapper'>
+      <div className='login-wrapper'>
         <Card className='overflow-hidden'>
-          <div className='loginHeader'>
+          <div className='login-header'>
             <div className='text-primary text-center p-4'>
-              <h5 className='text-white font-size-20'>
-                Welcome Back !
-              </h5>
-              <p className='text-white-50'>
-                Sign into Online Book Store
-              </p>
-              <img src={'https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png'}
-                   height='50'
-                   alt='logo'/>
+              <h1 className='text-white font-size-20'>
+                Sign In
+              </h1>
+              <i className='login-icon fas fa-users mt-2'/>
             </div>
           </div>
           <CardBody className='p-4'>
@@ -52,25 +50,28 @@ const LoginForm = () => {
                          labelText={'Email'}
                          name={'email'}
                          value={email}
-                         errorText={''}
+                         errorText={errorEmail}
                          onChangeFn={(event) => onChangeEmail(event)}/>
               <TextField isRequired={true}
                          labelText={'Password'}
                          type={'password'}
                          name={'password'}
                          value={password}
-                         errorText={''}
+                         errorText={errorPassword}
                          onChangeFn={(event) => onChangePassword(event)}/>
-              <div className='d-flex justify-content-end'>
-                <ButtonComponent btnText={'Login'}
+              <div className='text-center mt-4 mb-3'>
+                <ButtonComponent btnText={'Sign In'}
                                  isFullWidth={false}
-                                 elementStyle={'loginBtn'}
+                                 elementStyle={'login-btn'}
                                  onClickFn={onSubmit}/>
               </div>
             </div>
-            <div className='text-center'>
+            <div className='ms-3'>
+              <label>Don't have an account?&nbsp;</label>
               <Link to={'/register'}>
-                Click here to register
+                <label className='register-link'>
+                  Register
+                </label>
               </Link>
             </div>
           </CardBody>

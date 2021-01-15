@@ -4,6 +4,7 @@ import Login from './modules/login/login'
 import Register from './modules/register/register'
 import Home from './modules/home/home'
 import RouteFilter from './route-filter/route-filter'
+import './App.css'
 
 const App = () => {
   return (

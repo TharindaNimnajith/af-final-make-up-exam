@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react'
 import {FormGroup, Input, Label} from 'reactstrap'
+import './text-field.css'
 
 const empty = () => undefined
 
@@ -20,7 +21,7 @@ const TextField = (
   return (
     <Fragment>
       <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
-        <Label>
+        <Label className='mb-1 mt-3'>
           {labelText}
           {
             isRequired ? (

@@ -16,12 +16,12 @@
 }
 
 .sidebar a.active {
-    background-color: #4CAF50;
+    background-color: #183475 !important;
     color: white;
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #555555;
+    background-color: #555555 !important;
     color: white;
 }
 
