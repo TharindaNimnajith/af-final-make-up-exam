@@ -4,17 +4,19 @@ import './button.css'
 
 const emptyFn = () => undefined
 
-const ButtonComponent = ({
-                           elementWrapperStyle = '',
-                           elementStyle = '',
-                           btnText = '',
-                           btnName = '',
-                           btnColor = 'primary',
-                           btnSize = 'md',
-                           isOutline = false,
-                           isFullWidth = false,
-                           onClickFn = emptyFn
-                         }) => {
+const ButtonComponent = (
+  {
+    elementWrapperStyle = '',
+    elementStyle = '',
+    btnText = '',
+    btnName = '',
+    btnColor = 'primary',
+    btnSize = 'md',
+    isOutline = false,
+    isFullWidth = false,
+    onClickFn = emptyFn
+  }
+) => {
   return (
     <div className={elementWrapperStyle}>
       <Button className={`${elementStyle} btnBgColor`}

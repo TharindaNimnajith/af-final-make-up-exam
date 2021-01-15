@@ -21,12 +21,12 @@ const TextField = (
     <Fragment>
       <FormGroup className={`${elementWrapperStyle} ${errorText ? 'text-danger' : ''}`}>
         <Label>
-          {
-            labelText
-          }
+          {labelText}
           {
             isRequired ? (
-              <span style={{color: 'red'}}>
+              <span style={{
+                color: 'red'
+              }}>
                 &nbsp;*
               </span>
             ) : null

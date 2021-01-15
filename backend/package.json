@@ -11,7 +11,15 @@
     "type": "git",
     "url": "git://github.com/TharindaNimnajith/af-final-2021"
   },
-  "keywords": [],
+  "keywords": [
+    "IT18149654",
+    "AF",
+    "SLIIT",
+    "Express",
+    "Node",
+    "MongoDB",
+    "REST"
+  ],
   "author": "IT18149654 - Tharinda Nimnajith Rajapaksha",
   "license": "ISC",
   "dependencies": {
@@ -22,11 +30,11 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.3.1",
-    "mongoose": "^5.10.5",
+    "mongoose": "^5.11.12",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-unique-validator": "^2.0.3",
     "multer": "^1.4.2",
-    "node": "^14.5.0",
-    "nodemon": "^2.0.4"
+    "node": "^15.4.0",
+    "nodemon": "^2.0.7"
   }
 }

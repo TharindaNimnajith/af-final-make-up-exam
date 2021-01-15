@@ -8,31 +8,31 @@ const NavigationBar = () => {
       <Nav vertical>
         <NavItem>
           <NavLink href='/'>
-            <i className='fa fa-fw fa-home mr-2'/>
+            <i className='fa fa-fw fa-home m-1'/>
             <label>Navigation Link</label>
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href='/'>
-            <i className='fa fa-fw fa-home mr-2'/>
+            <i className='fa fa-fw fa-home m-1'/>
             <label>Navigation Link</label>
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href='/'>
-            <i className='fa fa-fw fa-home mr-2'/>
+            <i className='fa fa-fw fa-home m-1'/>
             <label>Navigation Link</label>
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href='/'>
-            <i className='fa fa-fw fa-home mr-2'/>
+            <i className='fa fa-fw fa-home m-1'/>
             <label>Navigation Link</label>
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href='/'>
-            <i className='fa fa-fw fa-home mr-2'/>
+            <i className='fa fa-fw fa-home m-1'/>
             <label>Navigation Link</label>
           </NavLink>
         </NavItem>

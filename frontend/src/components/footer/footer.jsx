@@ -10,10 +10,7 @@ const Footer = () => {
             IT18149654 - Application Frameworks Makeup Examination
           </h6>
           <h6 className={'mt-4 mb-4'}>
-            All Rights Reserved Copyright ©&nbsp;
-            {
-              new Date().getFullYear()
-            }
+            All Rights Reserved Copyright ©&nbsp;{new Date().getFullYear()}
           </h6>
         </div>
       </div>

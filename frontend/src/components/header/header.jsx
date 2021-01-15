@@ -23,7 +23,7 @@ const Header = (props) => {
       <Navbar expand='md'
               className={'header'}>
         <NavbarBrand>
-          <i className='icon fas fa-bars'
+          <i className='icon fas fa-bars ms-4'
              onClick={onNavBarDisplay}/>
         </NavbarBrand>
         <Nav className='mr-auto'
