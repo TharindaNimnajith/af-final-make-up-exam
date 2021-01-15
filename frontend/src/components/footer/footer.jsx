@@ -4,12 +4,12 @@ import './footer.css'
 const Footer = () => {
   return (
     <Fragment>
-      <div className={'footer'}>
-        <div className={'text-center my-3'}>
-          <h6 className={'mt-4'}>
+      <div className='footer'>
+        <div className='text-center my-3'>
+          <h6 className='mt-4'>
             IT18149654 - Application Frameworks Makeup Examination
           </h6>
-          <h6 className={'mt-4 mb-4'}>
+          <h6 className='mt-4 mb-4'>
             All Rights Reserved Copyright ©&nbsp;{new Date().getFullYear()}
           </h6>
         </div>

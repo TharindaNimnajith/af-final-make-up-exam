@@ -25,20 +25,20 @@ const LoginForm = () => {
   }
 
   return (
-    <div className={'container-fluid'}>
+    <div className='container-fluid'>
       {
         loader ? (
           <Loader/>
         ) : null
       }
-      <div className={'loginWrapper'}>
-        <Card className={'overflow-hidden'}>
-          <div className={'loginHeader'}>
-            <div className={'text-primary text-center p-4'}>
-              <h5 className={'text-white font-size-20'}>
+      <div className='loginWrapper'>
+        <Card className='overflow-hidden'>
+          <div className='loginHeader'>
+            <div className='text-primary text-center p-4'>
+              <h5 className='text-white font-size-20'>
                 Welcome Back !
               </h5>
-              <p className={'text-white-50'}>
+              <p className='text-white-50'>
                 Sign into Online Book Store
               </p>
               <img src={'https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png'}
@@ -46,8 +46,8 @@ const LoginForm = () => {
                    alt='logo'/>
             </div>
           </div>
-          <CardBody className={'p-4'}>
-            <div className={'p-3'}>
+          <CardBody className='p-4'>
+            <div className='p-3'>
               <TextField isRequired={true}
                          labelText={'Email'}
                          name={'email'}
@@ -61,14 +61,14 @@ const LoginForm = () => {
                          value={password}
                          errorText={''}
                          onChangeFn={(event) => onChangePassword(event)}/>
-              <div className={'d-flex justify-content-end'}>
+              <div className='d-flex justify-content-end'>
                 <ButtonComponent btnText={'Login'}
                                  isFullWidth={false}
                                  elementStyle={'loginBtn'}
                                  onClickFn={onSubmit}/>
               </div>
             </div>
-            <div className={'text-center'}>
+            <div className='text-center'>
               <Link to={'/register'}>
                 Click here to register
               </Link>

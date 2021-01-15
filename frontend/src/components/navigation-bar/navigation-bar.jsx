@@ -4,7 +4,7 @@ import './navigation-bar.css'
 
 const NavigationBar = () => {
   return (
-    <div className={'sidebar'}>
+    <div className='sidebar'>
       <Nav vertical>
         <NavItem>
           <NavLink href='/'>
