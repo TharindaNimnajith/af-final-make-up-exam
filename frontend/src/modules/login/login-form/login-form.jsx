@@ -1,12 +1,18 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Card, CardBody} from 'reactstrap'
+import axios from 'axios'
+import {authApi, authStoreKey} from '../../../configs/config'
+import {setLocalStorageItem} from '../../../helpers/local-storage.helpers'
+import {AppContext} from '../../../context-api/app-context'
 import Loader from '../../../components/loader/loader'
 import TextField from '../../../components/text-field/text-field'
 import ButtonComponent from '../../../components/button/button'
 import './login-form.css'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const appContext = useContext(AppContext)
+
   let errorEmail = ''
   let errorPassword = ''
 
@@ -26,8 +32,25 @@ const LoginForm = () => {
   }
 
   const onSubmit = () => {
-    console.log(email)
-    console.log(password)
+    const data = {
+      email,
+      password
+    }
+
+    axios.post(`${authApi}login`, data).then(res => {
+      setLoader(true)
+      if (res.status === 200) {
+        setLoader(false)
+        setLocalStorageItem(authStoreKey, res.data)
+        appContext.login(res.data)
+        props.history.push('/')
+      } else {
+        setLoader(false)
+      }
+    }).catch(err => {
+      setLoader(false)
+      console.error(err)
+    })
   }
 
   return (

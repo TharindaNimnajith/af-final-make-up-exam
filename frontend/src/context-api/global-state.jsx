@@ -2,15 +2,15 @@ import React, {useState} from 'react'
 import {AppContext} from './app-context'
 
 export const GlobalState = props => {
-  const [accessToken, setAccessToken] = useState('')
+  const [loginData, setLoginData] = useState(null)
 
-  const login = accessToken => {
-    setAccessToken(accessToken)
+  const login = data => {
+    setLoginData(data)
   }
 
   return (
     <AppContext.Provider value={{
-      accessToken: accessToken,
+      loginData: loginData,
       login: login
     }}>
       {props.children}

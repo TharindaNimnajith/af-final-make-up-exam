@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Card, CardBody} from 'reactstrap'
+import axios from 'axios'
+import {usersApi} from '../../../configs/config'
 import Loader from '../../../components/loader/loader'
 import TextField from '../../../components/text-field/text-field'
 import ButtonComponent from '../../../components/button/button'
 import './register-form.css'
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   let helperFirstName = ''
   let helperLastName = ''
   let helperEmail = ''
@@ -47,11 +49,25 @@ const RegisterForm = () => {
   }
 
   const onSubmit = () => {
-    console.log(firstName)
-    console.log(lastName)
-    console.log(email)
-    console.log(password)
-    console.log(confirmPassword)
+    const data = {
+      firstName,
+      lastName,
+      email,
+      password
+    }
+
+    axios.post(`${usersApi}users`, data).then(res => {
+      setLoader(true)
+      if (res.status === 201) {
+        setLoader(false)
+        props.history.push('/login')
+      } else {
+        setLoader(false)
+      }
+    }).catch(err => {
+      setLoader(false)
+      console.error(err)
+    })
   }
 
   return (

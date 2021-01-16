@@ -4,14 +4,14 @@ import Footer from '../../components/footer/footer'
 import RegisterForm from '../register/register-form/register-form'
 import './register.css'
 
-const Register = () => {
+const Register = (props) => {
   return (
     <div>
       <div>
         <Header/>
       </div>
       <div className='container register-form'>
-        <RegisterForm/>
+        <RegisterForm history={props.history}/>
       </div>
       <div>
         <Footer/>

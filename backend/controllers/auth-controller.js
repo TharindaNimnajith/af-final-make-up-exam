@@ -1,32 +1,31 @@
 const bcrypt = require('bcrypt')
 
+const HttpErrors = require('../config/errors.config')
 const UserModel = require('../models/users.model')
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
+  let user
+
   const {
     email,
     password
   } = req.body
 
   try {
-    const user = await UserModel.findOne({
+    user = await UserModel.findOne({
       email: email
     })
-    if (user && bcrypt.compareSync(password, user.password)) {
-      res.status(200).json({
-        status: 'Authorized',
-        data: user
-      })
-    } else {
-      res.status(401).json({
-        status: 'Unauthorized'
-      })
-    }
-  } catch (err) {
-    res.status(401).json({
+  } catch (error) {
+    console.log(error)
+    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+  }
+
+  if (user && bcrypt.compareSync(password, user.password))
+    res.status(200).send(user)
+  else
+    res.status(401).send({
       status: 'Unauthorized'
     })
-  }
 }
 
 module.exports = {
