@@ -28,8 +28,8 @@ const TextField = (
               {
                 isRequired ? (
                   <span className='error'>
-                &nbsp;*
-              </span>
+                    &nbsp;*
+                  </span>
                 ) : null
               }
             </Label>
@@ -49,7 +49,15 @@ const TextField = (
                    }}/>
             <small>
               {
-                errorText ? errorText : helperText
+                errorText ? (
+                  <span className='error'>
+                    {errorText}
+                  </span>
+                ) : (
+                  <span className='error'>
+                    {helperText}
+                  </span>
+                )
               }
             </small>
           </div>

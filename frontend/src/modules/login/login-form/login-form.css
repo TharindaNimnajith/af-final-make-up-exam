@@ -1,5 +1,6 @@
 .login-wrapper {
-    width: 450px;
+    min-width: max-content;
+    width: 40%;
 }
 
 .login-header {

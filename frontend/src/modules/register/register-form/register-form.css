@@ -1,5 +1,6 @@
 .register-wrapper {
-    width: 450px;
+    min-width: max-content;
+    width: 40%;
 }
 
 .register-header {

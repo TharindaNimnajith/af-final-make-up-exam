@@ -7,6 +7,12 @@ import ButtonComponent from '../../../components/button/button'
 import './register-form.css'
 
 const RegisterForm = () => {
+  let helperFirstName = ''
+  let helperLastName = ''
+  let helperEmail = ''
+  let helperPassword = ''
+  let helperConfirmPassword = ''
+
   let errorFirstName = ''
   let errorLastName = ''
   let errorEmail = ''
@@ -49,87 +55,90 @@ const RegisterForm = () => {
   }
 
   return (
-    <div>
+    <div className='register-wrapper'>
       {
         loader ? (
           <Loader/>
         ) : null
       }
-      <div className='register-wrapper'>
-        <Card className='overflow-hidden'>
-          <div className='register-header'>
-            <div className='text-primary text-center p-4'>
-              <h1 className='text-white font-size-20 text-uppercase'>
-                <i className='register-icon fas fa-user-plus mt-2'/>
-                <span className='ms-3'>
+      <Card className='overflow-hidden'>
+        <div className='register-header'>
+          <div className='text-primary text-center p-4'>
+            <h1 className='text-white font-size-20 text-uppercase'>
+              <i className='register-icon fas fa-user-plus mt-2'/>
+              <span className='ms-3'>
                   Register
                 </span>
-              </h1>
+            </h1>
+          </div>
+        </div>
+        <CardBody className='p-4'>
+          <div className='p-3'>
+            <div>
+              <TextField isRequired={true}
+                         labelText={'First Name'}
+                         name={'firstName'}
+                         value={firstName}
+                         errorText={errorFirstName}
+                         helperText={helperFirstName}
+                         onChangeFn={(event) => onChangeFirstName(event)}/>
+            </div>
+            <div>
+              <TextField isRequired={true}
+                         labelText={'Last Name'}
+                         name={'lastName'}
+                         value={lastName}
+                         errorText={errorLastName}
+                         helperText={helperLastName}
+                         onChangeFn={(event) => onChangeLastName(event)}/>
+            </div>
+            <div>
+              <TextField isRequired={true}
+                         labelText={'Email'}
+                         type={'email'}
+                         name={'email'}
+                         value={email}
+                         errorText={errorEmail}
+                         helperText={helperEmail}
+                         onChangeFn={(event) => onChangeEmail(event)}/>
+            </div>
+            <div>
+              <TextField isRequired={true}
+                         labelText={'Password'}
+                         type={'password'}
+                         name={'password'}
+                         value={password}
+                         errorText={errorPassword}
+                         helperText={helperPassword}
+                         onChangeFn={(event) => onChangePassword(event)}/>
+            </div>
+            <div>
+              <TextField isRequired={true}
+                         labelText={'Confirm Password'}
+                         type={'password'}
+                         name={'confirmPassword'}
+                         value={confirmPassword}
+                         errorText={errorConfirmPassword}
+                         helperText={helperConfirmPassword}
+                         onChangeFn={(event) => onChangeConfirmPassword(event)}/>
+            </div>
+            <div className='text-center mt-4 mb-3'>
+              <ButtonComponent btnText={'Register'}
+                               isFullWidth={false}
+                               elementStyle={'register-btn'}
+                               onClickFn={onSubmit}/>
             </div>
           </div>
-          <CardBody className='p-4'>
-            <div className='p-3'>
-              <div>
-                <TextField isRequired={true}
-                           labelText={'First Name'}
-                           name={'firstName'}
-                           value={firstName}
-                           errorText={errorFirstName}
-                           onChangeFn={(event) => onChangeFirstName(event)}/>
-              </div>
-              <div>
-                <TextField isRequired={true}
-                           labelText={'Last Name'}
-                           name={'lastName'}
-                           value={lastName}
-                           errorText={errorLastName}
-                           onChangeFn={(event) => onChangeLastName(event)}/>
-              </div>
-              <div>
-                <TextField isRequired={true}
-                           labelText={'Email'}
-                           type={'email'}
-                           name={'email'}
-                           value={email}
-                           errorText={errorEmail}
-                           onChangeFn={(event) => onChangeEmail(event)}/>
-              </div>
-              <div>
-                <TextField isRequired={true}
-                           labelText={'Password'}
-                           type={'password'}
-                           name={'password'}
-                           value={password}
-                           errorText={errorPassword}
-                           onChangeFn={(event) => onChangePassword(event)}/>
-              </div>
-              <div>
-                <TextField isRequired={true}
-                           labelText={'Confirm Password'}
-                           type={'password'}
-                           name={'confirmPassword'}
-                           value={confirmPassword}
-                           errorText={errorConfirmPassword}
-                           onChangeFn={(event) => onChangeConfirmPassword(event)}/>
-              </div>
-              <div className='text-center mt-4 mb-3'>
-                <ButtonComponent btnText={'Register'}
-                                 isFullWidth={false}
-                                 elementStyle={'register-btn'}
-                                 onClickFn={onSubmit}/>
-              </div>
-            </div>
-            <div className='ms-3'>
-              <label>Already have an account?&nbsp;</label>
-              <Link to={'/login'}>
-                <label className='login-link'>
-                  Login
-                </label>
-              </Link>
-            </div>
-          </CardBody>
-        </Card>
-      </div>
+          <div className='ms-3'>
+            <label>Already have an account?&nbsp;</label>
+            <Link to={'/login'}>
+              <label className='login-link'>
+                Login
+              </label>
+            </Link>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   )
 }

@@ -13,7 +13,7 @@ const Login = () => {
       <div className='container login-form'>
         <LoginForm/>
       </div>
-      <div id='footer'>
+      <div>
         <Footer/>
       </div>
     </div>
