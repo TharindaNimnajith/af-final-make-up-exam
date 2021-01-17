@@ -1,8 +1,5 @@
 const isEmpty = (value) => {
-  if (value === '' || value === null || value === undefined || value === 'null' || value === 'undefined')
-    return true
-  else
-    return false
+  return value === '' || value === null || value === undefined || value === 'null' || value === 'undefined'
 }
 
 const dateToString = (value, format = 'dd-mm-YY') => {
