@@ -1,10 +1,10 @@
 const fileUpload = (req, res) => {
-  res.status(200).json({
-    data: {
-      filename: req.file.filename,
-      destination: req.file.destination
-    }
-  })
+  const data = {
+    filename: req.file.filename,
+    destination: req.file.destination
+  }
+
+  res.status(200).send(data)
 }
 
 module.exports = {

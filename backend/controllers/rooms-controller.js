@@ -1,7 +1,6 @@
-const HttpErrors = require('../config/errors.config')
 const RoomModel = require('../models/rooms.model')
 
-const addRoom = async (req, res, next) => {
+const addRoom = async (req, res) => {
   let existingRoom
 
   let {
@@ -16,16 +15,14 @@ const addRoom = async (req, res, next) => {
       roomName: roomName
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   if (existingRoom) {
-    res.json({
+    res.status(409).send({
       exists: true,
       message: 'A room with the same name already exists.'
     })
-    return next(new HttpErrors('A room with the same name already exists.', 409))
   }
 
   roomCapacity = parseInt(roomCapacity)
@@ -40,8 +37,7 @@ const addRoom = async (req, res, next) => {
   try {
     await newRoom.save()
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   res.status(201).send({
@@ -49,7 +45,7 @@ const addRoom = async (req, res, next) => {
   })
 }
 
-const updateRoom = async (req, res, next) => {
+const updateRoom = async (req, res) => {
   let room
   let existingRoom
 
@@ -67,8 +63,7 @@ const updateRoom = async (req, res, next) => {
   try {
     room = await RoomModel.findById(id)
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   try {
@@ -76,16 +71,14 @@ const updateRoom = async (req, res, next) => {
       roomName: roomName
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   if (existingRoom && roomName !== room.roomName) {
-    res.json({
+    res.status(409).send({
       exists: true,
       message: 'A room with the same name already exists.'
     })
-    return next(new HttpErrors('A room with the same name already exists.', 409))
   }
 
   room.roomName = roomName
@@ -96,8 +89,7 @@ const updateRoom = async (req, res, next) => {
   try {
     await room.save()
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   res.status(200).send({
@@ -105,7 +97,7 @@ const updateRoom = async (req, res, next) => {
   })
 }
 
-const deleteRoom = async (req, res, next) => {
+const deleteRoom = async (req, res) => {
   let room
 
   const {
@@ -116,8 +108,7 @@ const deleteRoom = async (req, res, next) => {
     room = await RoomModel.findById(id)
     await room.remove()
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   res.status(200).send({
@@ -125,7 +116,7 @@ const deleteRoom = async (req, res, next) => {
   })
 }
 
-const getRoom = async (req, res, next) => {
+const getRoom = async (req, res) => {
   let room
 
   const {
@@ -135,8 +126,7 @@ const getRoom = async (req, res, next) => {
   try {
     room = await RoomModel.findById(id)
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   room.roomCapacity = room.roomCapacity.toString()
@@ -144,14 +134,13 @@ const getRoom = async (req, res, next) => {
   res.status(200).send(room)
 }
 
-const getRoomList = async (req, res, next) => {
+const getRoomList = async (req, res) => {
   let roomList
 
   try {
     roomList = await RoomModel.find()
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   for (let i = 0; i < roomList.length; i++)
@@ -160,7 +149,7 @@ const getRoomList = async (req, res, next) => {
   res.status(200).send(roomList)
 }
 
-const getRoomListByBuilding = async (req, res, next) => {
+const getRoomListByBuilding = async (req, res) => {
   let roomList
 
   const {
@@ -172,8 +161,7 @@ const getRoomListByBuilding = async (req, res, next) => {
       buildingName: buildingName
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   for (let i = 0; i < roomList.length; i++)
@@ -182,7 +170,7 @@ const getRoomListByBuilding = async (req, res, next) => {
   res.status(200).send(roomList)
 }
 
-const getRoomByRoomName = async (req, res, next) => {
+const getRoomByRoomName = async (req, res) => {
   let room
 
   const {
@@ -194,14 +182,13 @@ const getRoomByRoomName = async (req, res, next) => {
       roomName: roomName
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   res.status(200).send(room)
 }
 
-const getRoomListByRoomName = async (req, res, next) => {
+const getRoomListByRoomName = async (req, res) => {
   let roomList
 
   const {
@@ -216,8 +203,7 @@ const getRoomListByRoomName = async (req, res, next) => {
       }
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   for (let i = 0; i < roomList.length; i++)
@@ -226,7 +212,7 @@ const getRoomListByRoomName = async (req, res, next) => {
   res.status(200).send(roomList)
 }
 
-const getRoomListByRoomType = async (req, res, next) => {
+const getRoomListByRoomType = async (req, res) => {
   let roomList
 
   const {
@@ -238,8 +224,7 @@ const getRoomListByRoomType = async (req, res, next) => {
       roomType: roomType
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   for (let i = 0; i < roomList.length; i++)
@@ -248,7 +233,7 @@ const getRoomListByRoomType = async (req, res, next) => {
   res.status(200).send(roomList)
 }
 
-const searchRooms = async (req, res, next) => {
+const searchRooms = async (req, res) => {
   let roomList
 
   const {
@@ -268,8 +253,7 @@ const searchRooms = async (req, res, next) => {
         roomType: roomType
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (roomName !== "" && buildingName !== "") {
     try {
@@ -281,8 +265,7 @@ const searchRooms = async (req, res, next) => {
         buildingName: buildingName
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (roomName !== "" && roomType !== "") {
     try {
@@ -294,8 +277,7 @@ const searchRooms = async (req, res, next) => {
         roomType: roomType
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (buildingName !== "" && roomType !== "") {
     try {
@@ -304,8 +286,7 @@ const searchRooms = async (req, res, next) => {
         roomType: roomType
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (roomName !== "") {
     try {
@@ -316,8 +297,7 @@ const searchRooms = async (req, res, next) => {
         }
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (buildingName !== "") {
     try {
@@ -325,8 +305,7 @@ const searchRooms = async (req, res, next) => {
         buildingName: buildingName
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else if (roomType !== "") {
     try {
@@ -334,15 +313,13 @@ const searchRooms = async (req, res, next) => {
         roomType: roomType
       })
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   } else {
     try {
       roomList = await RoomModel.find()
     } catch (error) {
-      console.log(error)
-      return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+      res.status(500).send(error)
     }
   }
 

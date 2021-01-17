@@ -1,17 +1,20 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Redirect, Route} from 'react-router-dom'
-import {checkUserInLocalStorage, setLocalStorageItem} from '../helpers/local-storage.helpers'
+import {AppContext} from '../context-api/app-context'
+import {checkUserInLocalStorage} from '../helpers/local-storage.helpers'
 import Loader from '../components/loader/loader'
 import './route-filter.css'
 
 const RouteFilter = ({component: Component, isProtected, ...rest}) => {
+  const appContext = useContext(AppContext)
+
   const [isAuth, setAuth] = useState(null)
 
   useEffect(() => {
     const localeStorageData = checkUserInLocalStorage()
 
     if (localeStorageData.status === true) {
-      setLocalStorageItem(localeStorageData.result)
+      appContext.login(localeStorageData.result)
       setAuth(true)
     } else {
       setAuth(false)

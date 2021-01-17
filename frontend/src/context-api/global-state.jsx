@@ -8,10 +8,16 @@ export const GlobalState = props => {
     setLoginData(data)
   }
 
+  const logout = () => {
+    setLoginData(null)
+  }
+
   return (
     <AppContext.Provider value={{
       loginData: loginData,
-      login: login
+
+      login: login,
+      logout: logout
     }}>
       {props.children}
     </AppContext.Provider>

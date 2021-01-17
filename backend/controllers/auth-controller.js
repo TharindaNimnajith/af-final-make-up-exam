@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt')
 
-const HttpErrors = require('../config/errors.config')
 const UserModel = require('../models/users.model')
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   let user
 
   const {
@@ -16,8 +15,7 @@ const login = async (req, res, next) => {
       email: email
     })
   } catch (error) {
-    console.log(error)
-    return next(new HttpErrors('Unexpected internal server error occurred, please try again later.', 500))
+    res.status(500).send(error)
   }
 
   if (user && bcrypt.compareSync(password, user.password))

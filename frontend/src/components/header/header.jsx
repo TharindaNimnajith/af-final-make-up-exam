@@ -1,17 +1,21 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useContext, useState} from 'react'
 import {withRouter} from 'react-router-dom'
 import {Navbar, NavbarBrand} from 'reactstrap'
 import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
 import {authStoreKey} from '../../configs/config'
+import {AppContext} from '../../context-api/app-context'
 import NavigationBar from '../navigation-bar/navigation-bar'
 import './header.css'
 
 const Header = (props) => {
+  const appContext = useContext(AppContext)
+
   const [display, setDisplay] = useState(false)
 
   const onSignOut = () => {
     removeFromLocalStorage(authStoreKey)
-    props.history.push('/')
+    appContext.logout()
+    props.history.push('/login')
   }
 
   const onNavBarDisplay = () => {
@@ -30,7 +34,7 @@ const Header = (props) => {
                    onClick={onNavBarDisplay}/>
               </NavbarBrand>
             </div>
-            <div>
+            <div className={appContext.loginData === null ? 'invisible' : ''}>
               <NavbarBrand>
                 <i className='icon fas fa-sign-out-alt'
                    onClick={onSignOut}/>
