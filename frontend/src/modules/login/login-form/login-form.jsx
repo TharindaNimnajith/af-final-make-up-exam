@@ -14,8 +14,8 @@ import './login-form.css'
 const LoginForm = (props) => {
   const appContext = useContext(AppContext)
 
-  let helperEmail = 'Please enter your email address.'
-  let helperPassword = 'Please enter your password.'
+  const helperEmail = 'Please enter your email address.'
+  const helperPassword = 'Please enter your password.'
 
   const [loader, setLoader] = useState(false)
 
@@ -34,7 +34,6 @@ const LoginForm = (props) => {
     setErrorEmail('')
     if (!event.eventInfo.target.validity.valid)
       setErrorEmail('Please enter a valid email address.')
-    console.log(errorEmail)
   }
 
   const onChangePassword = (event) => {
@@ -43,6 +42,10 @@ const LoginForm = (props) => {
     setErrorPassword('')
     if (!event.eventInfo.target.validity.valid)
       setErrorPassword('Please enter a valid password.')
+  }
+
+  function isDisabled() {
+    return !emailValid || !passwordValid
   }
 
   const onSubmit = () => {
@@ -110,7 +113,7 @@ const LoginForm = (props) => {
               <ButtonComponent btnText={'Login'}
                                isFullWidth={false}
                                elementStyle={'login-btn'}
-                               disabled={!emailValid || !passwordValid}
+                               disabled={isDisabled()}
                                onClickFn={onSubmit}/>
             </div>
           </div>

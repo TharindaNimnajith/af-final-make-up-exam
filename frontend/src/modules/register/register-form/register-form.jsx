@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Card, CardBody} from 'reactstrap'
 import axios from 'axios'
+import {isEmpty} from '../../../helpers/common.helpers'
 import {usersApi} from '../../../configurations/configurations'
 import Loader from '../../../components/loader/loader'
 import TextField from '../../../components/text-field/text-field'
@@ -9,43 +10,74 @@ import ButtonComponent from '../../../components/button/button'
 import './register-form.css'
 
 const RegisterForm = (props) => {
-  let helperFirstName = ''
-  let helperLastName = ''
-  let helperEmail = ''
-  let helperPassword = ''
-  let helperConfirmPassword = ''
-
-  let errorFirstName = ''
-  let errorLastName = ''
-  let errorEmail = ''
-  let errorPassword = ''
-  let errorConfirmPassword = ''
+  const helperFirstName = 'Please enter your first name.'
+  const helperLastName = 'Please enter your last name.'
+  const helperEmail = 'Please enter your email address.'
+  const helperPassword = 'Please enter a password.'
+  const helperConfirmPassword = 'Please enter the password again.'
 
   const [loader, setLoader] = useState(false)
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  const [errorFirstName, setErrorFirstName] = useState('')
+  const [errorLastName, setErrorLastName] = useState('')
+  const [errorEmail, setErrorEmail] = useState('')
+  const [errorPassword, setErrorPassword] = useState('')
+  const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
+
+  const [firstNameValid, setFirstNameValid] = useState(false)
+  const [lastNameValid, setLastNameValid] = useState(false)
+  const [emailValid, setEmailValid] = useState(false)
+  const [passwordValid, setPasswordValid] = useState(false)
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(false)
+
   const onChangeFirstName = (event) => {
     setFirstName(event.value)
+    setFirstNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setErrorFirstName('')
+    if (!event.eventInfo.target.validity.valid)
+      setErrorFirstName('Please enter a valid first name.')
   }
 
   const onChangeLastName = (event) => {
     setLastName(event.value)
+    setLastNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setErrorLastName('')
+    if (!event.eventInfo.target.validity.valid)
+      setErrorLastName('Please enter a valid last name.')
   }
 
   const onChangeEmail = (event) => {
     setEmail(event.value)
+    setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setErrorEmail('')
+    if (!event.eventInfo.target.validity.valid)
+      setErrorEmail('Please enter a valid email address.')
   }
 
   const onChangePassword = (event) => {
     setPassword(event.value)
+    setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setErrorPassword('')
+    if (!event.eventInfo.target.validity.valid)
+      setErrorPassword('Please enter a valid password.')
   }
 
   const onChangeConfirmPassword = (event) => {
     setConfirmPassword(event.value)
+    setConfirmPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setErrorConfirmPassword('')
+    if (!event.eventInfo.target.validity.valid)
+      setErrorConfirmPassword('Please enter a valid password.')
+  }
+
+  function isDisabled() {
+    return !firstNameValid || lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
   }
 
   const onSubmit = () => {
@@ -142,6 +174,7 @@ const RegisterForm = (props) => {
               <ButtonComponent btnText={'Register'}
                                isFullWidth={false}
                                elementStyle={'register-btn'}
+                               disabled={isDisabled()}
                                onClickFn={onSubmit}/>
             </div>
           </div>
