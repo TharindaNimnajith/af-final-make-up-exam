@@ -65,29 +65,28 @@ const RegisterForm = (props) => {
     setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorPassword('')
     if (!event.eventInfo.target.validity.valid)
-      setErrorPassword('Please enter a valid password.')
+      setErrorPassword('Please enter a strong password with at least 4 characters.')
   }
 
   const onChangeConfirmPassword = (event) => {
     setConfirmPassword(event.value)
-    setConfirmPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setConfirmPasswordValid(event.value === password)
     setErrorConfirmPassword('')
-    if (!event.eventInfo.target.validity.valid)
-      setErrorConfirmPassword('Please enter a valid password.')
+    if (event.value !== password)
+      setErrorConfirmPassword('Please make sure your passwords match.')
   }
 
   function isDisabled() {
-    return !firstNameValid || lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
+    return !firstNameValid || !lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
   }
 
   const onSubmit = () => {
     const data = {
-      firstName,
-      lastName,
-      email,
-      password
+      'firstName': firstName.trim(),
+      'lastName': lastName.trim(),
+      'email': email.trim(),
+      'password': password
     }
-
     axios.post(`${usersApi}users`, data).then(res => {
       setLoader(true)
       if (res.status === 201) {
@@ -129,6 +128,7 @@ const RegisterForm = (props) => {
                          value={firstName}
                          errorText={errorFirstName}
                          helperText={helperFirstName}
+                         maxLength={50}
                          onChangeFn={(event) => onChangeFirstName(event)}/>
             </div>
             <div>
@@ -138,6 +138,7 @@ const RegisterForm = (props) => {
                          value={lastName}
                          errorText={errorLastName}
                          helperText={helperLastName}
+                         maxLength={50}
                          onChangeFn={(event) => onChangeLastName(event)}/>
             </div>
             <div>
@@ -148,6 +149,8 @@ const RegisterForm = (props) => {
                          value={email}
                          errorText={errorEmail}
                          helperText={helperEmail}
+                         minLength={6}
+                         maxLength={100}
                          onChangeFn={(event) => onChangeEmail(event)}/>
             </div>
             <div>
@@ -158,6 +161,8 @@ const RegisterForm = (props) => {
                          value={password}
                          errorText={errorPassword}
                          helperText={helperPassword}
+                         minLength={4}
+                         maxLength={50}
                          onChangeFn={(event) => onChangePassword(event)}/>
             </div>
             <div>
@@ -168,6 +173,9 @@ const RegisterForm = (props) => {
                          value={confirmPassword}
                          errorText={errorConfirmPassword}
                          helperText={helperConfirmPassword}
+                         disabled={!passwordValid}
+                         minLength={4}
+                         maxLength={50}
                          onChangeFn={(event) => onChangeConfirmPassword(event)}/>
             </div>
             <div className='text-center mt-4 mb-3'>

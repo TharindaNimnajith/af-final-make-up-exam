@@ -15,6 +15,10 @@ const TextField = (
     placeholder = '',
     errorText = '',
     helperText = '',
+    disabled = false,
+    // pattern = '[a-zA-Z0-9!@#$&()\\\\-`.+,/\\"\']+[a-zA-Z0-9!@#$&()\\\\-`.+,/\\"\' ]+',
+    minLength = 1,
+    maxLength = 1000,
     onChangeFn = empty
   }
 ) => {
@@ -35,11 +39,16 @@ const TextField = (
             </Label>
           </div>
           <div>
-            <Input type={type}
+            <Input required={isRequired}
+                   type={type}
                    className={errorText ? 'is-invalid' : ''}
                    name={name}
                    placeholder={placeholder}
                    value={value}
+                   disabled={disabled}
+              // pattern={pattern}
+                   minLength={minLength}
+                   maxLength={maxLength}
                    onChange={(event) => {
                      onChangeFn({
                        value: event.target.value,

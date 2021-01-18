@@ -50,8 +50,8 @@ const LoginForm = (props) => {
 
   const onSubmit = () => {
     const data = {
-      email,
-      password
+      'email': email.trim(),
+      'password': password
     }
     axios.post(`${authApi}login`, data).then(res => {
       setLoader(true)
@@ -97,6 +97,8 @@ const LoginForm = (props) => {
                          value={email}
                          errorText={errorEmail}
                          helperText={helperEmail}
+                         minLength={6}
+                         maxLength={100}
                          onChangeFn={(event) => onChangeEmail(event)}/>
             </div>
             <div>
@@ -107,6 +109,8 @@ const LoginForm = (props) => {
                          value={password}
                          errorText={errorPassword}
                          helperText={helperPassword}
+                         minLength={4}
+                         maxLength={50}
                          onChangeFn={(event) => onChangePassword(event)}/>
             </div>
             <div className='text-center mt-4 mb-3'>
