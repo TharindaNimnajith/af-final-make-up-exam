@@ -1,4 +1,4 @@
-import {authStoreKey} from '../configs/config'
+import {authStoreKey} from '../configurations/configurations'
 
 const setLocalStorageItem = (key, obj) => {
   try {
@@ -33,7 +33,6 @@ const getFromLocalStorage = (key) => {
 const checkUserInLocalStorage = () => {
   try {
     const data = getFromLocalStorage(authStoreKey)
-
     if (data) {
       return {
         status: true,

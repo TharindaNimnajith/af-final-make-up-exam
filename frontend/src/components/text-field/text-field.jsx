@@ -54,7 +54,7 @@ const TextField = (
                     {errorText}
                   </span>
                 ) : (
-                  <span className='error'>
+                  <span className='helper'>
                     {helperText}
                   </span>
                 )

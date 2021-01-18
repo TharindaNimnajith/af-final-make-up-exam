@@ -14,6 +14,7 @@ const ButtonComponent = (
     btnSize = 'md',
     isOutline = false,
     isFullWidth = false,
+    disabled = false,
     onClickFn = emptyFn
   }
 ) => {
@@ -25,6 +26,7 @@ const ButtonComponent = (
               block={isFullWidth}
               outline={isOutline}
               name={btnName}
+              disabled={disabled}
               onClick={(event) => onClickFn({
                 name: btnName,
                 eventInfo: event

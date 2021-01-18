@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react'
 import {BrowserRouter, Switch} from 'react-router-dom'
+import RouteFilter from './configurations/route-filter'
 import Login from './modules/login/login'
 import Register from './modules/register/register'
 import Home from './modules/home/home'
-import RouteFilter from './route-filter/route-filter'
 import './App.css'
 
 const App = () => {

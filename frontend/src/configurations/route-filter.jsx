@@ -3,7 +3,6 @@ import {Redirect, Route} from 'react-router-dom'
 import {AppContext} from '../context-api/app-context'
 import {checkUserInLocalStorage} from '../helpers/local-storage.helpers'
 import Loader from '../components/loader/loader'
-import './route-filter.css'
 
 const RouteFilter = ({component: Component, isProtected, ...rest}) => {
   const appContext = useContext(AppContext)
@@ -12,7 +11,6 @@ const RouteFilter = ({component: Component, isProtected, ...rest}) => {
 
   useEffect(() => {
     const localeStorageData = checkUserInLocalStorage()
-
     if (localeStorageData.status === true) {
       appContext.login(localeStorageData.result)
       setAuth(true)

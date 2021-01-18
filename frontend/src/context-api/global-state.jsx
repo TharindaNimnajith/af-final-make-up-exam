@@ -15,7 +15,6 @@ export const GlobalState = props => {
   return (
     <AppContext.Provider value={{
       loginData: loginData,
-
       login: login,
       logout: logout
     }}>

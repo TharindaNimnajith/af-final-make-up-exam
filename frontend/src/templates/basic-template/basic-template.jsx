@@ -5,18 +5,24 @@ import './basic-template.css'
 
 const BasicTemplate = (props) => {
   return (
-    <Fragment>
-      <Header/>
-      <div>
-        {
-          React.Children.map(props.children, (child) => {
-            if (child)
-              return React.cloneElement(props.children)
-          })
-        }
-      </div>
-      <Footer/>
-    </Fragment>
+    <div>
+      <Fragment>
+        <div>
+          <Header/>
+        </div>
+        <div>
+          {
+            React.Children.map(props.children, (child) => {
+              if (child)
+                return React.cloneElement(props.children)
+            })
+          }
+        </div>
+        <div>
+          <Footer/>
+        </div>
+      </Fragment>
+    </div>
   )
 }
 
