@@ -5,7 +5,7 @@ const setLocalStorageItem = (key, obj) => {
     localStorage.setItem(key, JSON.stringify(obj))
     return true
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return false
   }
 }
@@ -15,7 +15,7 @@ const removeFromLocalStorage = (key) => {
     localStorage.removeItem(key)
     return true
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return false
   }
 }
@@ -25,7 +25,7 @@ const getFromLocalStorage = (key) => {
     const data = localStorage.getItem(key)
     return JSON.parse(data)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return false
   }
 }
@@ -44,7 +44,7 @@ const checkUserInLocalStorage = () => {
       }
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return {
       status: false
     }

@@ -28,10 +28,13 @@ const LoginForm = (props) => {
   const [emailValid, setEmailValid] = useState(false)
   const [passwordValid, setPasswordValid] = useState(false)
 
+  const [error, setError] = useState('')
+
   const onChangeEmail = (event) => {
     setEmail(event.value)
     setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorEmail('')
+    setError('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorEmail('Please enter a valid email address.')
     }
@@ -41,34 +44,36 @@ const LoginForm = (props) => {
     setPassword(event.value)
     setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorPassword('')
+    setError('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorPassword('Please enter a valid password.')
     }
   }
 
   function isDisabled() {
-    return !emailValid
-      || !passwordValid
+    return !emailValid || !passwordValid
   }
 
   const onSubmit = () => {
+    setError('')
     const data = {
       'email': email.trim(),
       'password': password
     }
     axios.post(`${authApi}login`, data).then(res => {
       setLoader(true)
-      if (res.status === 200) {
-        setLoader(false)
-        setLocalStorageItem(authStoreKey, res.data)
-        appContext.login(res.data)
+      if (res.data.status === 200) {
+        setLocalStorageItem(authStoreKey, res.data.user)
+        appContext.login(res.data.user)
         props.history.push('/')
-      } else {
-        setLoader(false)
+      } else if (res.data.status === 401) {
+        setError(res.data.message)
       }
-    }).catch(err => {
       setLoader(false)
-      console.error(err)
+    }).catch(error => {
+      setError('An unexpected error occurred. Please try again later.')
+      setLoader(false)
+      console.error(error)
     })
   }
 
@@ -91,6 +96,17 @@ const LoginForm = (props) => {
           </div>
         </div>
         <CardBody className='p-4'>
+          <div>
+            <small>
+              {
+                error ? (
+                  <span className='p-3 error'>
+                    {error}
+                  </span>
+                ) : null
+              }
+            </small>
+          </div>
           <div className='p-3'>
             <div>
               <TextField isRequired={true}

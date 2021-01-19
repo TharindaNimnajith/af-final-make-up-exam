@@ -36,6 +36,8 @@ const RegisterForm = (props) => {
   const [passwordValid, setPasswordValid] = useState(false)
   const [confirmPasswordValid, setConfirmPasswordValid] = useState(false)
 
+  const [error, setError] = useState('')
+
   const onChangeFirstName = (event) => {
     setFirstName(event.value)
     setFirstNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
@@ -58,6 +60,7 @@ const RegisterForm = (props) => {
     setEmail(event.value)
     setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorEmail('')
+    setError('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorEmail('Please enter a valid email address.')
     }
@@ -82,14 +85,11 @@ const RegisterForm = (props) => {
   }
 
   function isDisabled() {
-    return !firstNameValid
-      || !lastNameValid
-      || !emailValid
-      || !passwordValid
-      || !confirmPasswordValid
+    return !firstNameValid || !lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
   }
 
   const onSubmit = () => {
+    setError('')
     const data = {
       'firstName': firstName.trim(),
       'lastName': lastName.trim(),
@@ -98,15 +98,17 @@ const RegisterForm = (props) => {
     }
     axios.post(`${usersApi}users`, data).then(res => {
       setLoader(true)
-      if (res.status === 201) {
+      if (res.data.status === 201) {
         setLoader(false)
         props.history.push('/login')
-      } else {
-        setLoader(false)
+      } else if (res.data.status === 409) {
+        setError(res.data.message)
       }
-    }).catch(err => {
       setLoader(false)
-      console.error(err)
+    }).catch(error => {
+      setError('An unexpected error occurred. Please try again later.')
+      setLoader(false)
+      console.error(error)
     })
   }
 
@@ -129,6 +131,17 @@ const RegisterForm = (props) => {
           </div>
         </div>
         <CardBody className='p-4'>
+          <div>
+            <small>
+              {
+                error ? (
+                  <span className='p-3 error'>
+                    {error}
+                  </span>
+                ) : null
+              }
+            </small>
+          </div>
           <div className='p-3'>
             <div>
               <TextField isRequired={true}

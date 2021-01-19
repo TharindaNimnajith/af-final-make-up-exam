@@ -15,14 +15,19 @@ const login = async (req, res) => {
       email: email
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (user && bcrypt.compareSync(password, user.password)) {
-    res.status(200).send(user)
+    res.send({
+      status: 200,
+      user: user
+    })
   } else {
-    res.status(401).send({
-      status: 'Unauthorized'
+    res.send({
+      status: 401,
+      message: 'Incorrect email or password! Please double check and try again.'
     })
   }
 }

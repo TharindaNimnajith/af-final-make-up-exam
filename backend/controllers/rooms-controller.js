@@ -15,12 +15,13 @@ const addRoom = async (req, res) => {
       roomName: roomName
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (existingRoom) {
-    res.status(409).send({
-      exists: true,
+    res.send({
+      status: 409,
       message: 'A room with the same name already exists.'
     })
   }
@@ -37,10 +38,12 @@ const addRoom = async (req, res) => {
   try {
     await newRoom.save()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(201).send({
+  res.send({
+    status: 201,
     message: 'New room added successfully!'
   })
 }
@@ -63,6 +66,7 @@ const updateRoom = async (req, res) => {
   try {
     room = await RoomModel.findById(id)
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -71,12 +75,13 @@ const updateRoom = async (req, res) => {
       roomName: roomName
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (existingRoom && roomName !== room.roomName) {
-    res.status(409).send({
-      exists: true,
+    res.send({
+      status: 409,
       message: 'A room with the same name already exists.'
     })
   }
@@ -89,10 +94,12 @@ const updateRoom = async (req, res) => {
   try {
     await room.save()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send({
+  res.send({
+    status: 200,
     message: 'Room updated successfully!'
   })
 }
@@ -108,10 +115,12 @@ const deleteRoom = async (req, res) => {
     room = await RoomModel.findById(id)
     await room.remove()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send({
+  res.send({
+    status: 200,
     message: 'Room deleted successfully!'
   })
 }
@@ -126,12 +135,16 @@ const getRoom = async (req, res) => {
   try {
     room = await RoomModel.findById(id)
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   room.roomCapacity = room.roomCapacity.toString()
 
-  res.status(200).send(room)
+  res.send({
+    status: 200,
+    room: room
+  })
 }
 
 const getRoomList = async (req, res) => {
@@ -140,6 +153,7 @@ const getRoomList = async (req, res) => {
   try {
     roomList = await RoomModel.find()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -147,7 +161,10 @@ const getRoomList = async (req, res) => {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
   }
 
-  res.status(200).send(roomList)
+  res.send({
+    status: 200,
+    roomList: roomList
+  })
 }
 
 const getRoomListByBuilding = async (req, res) => {
@@ -162,6 +179,7 @@ const getRoomListByBuilding = async (req, res) => {
       buildingName: buildingName
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -169,7 +187,10 @@ const getRoomListByBuilding = async (req, res) => {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
   }
 
-  res.status(200).send(roomList)
+  res.send({
+    status: 200,
+    roomList: roomList
+  })
 }
 
 const getRoomByRoomName = async (req, res) => {
@@ -184,10 +205,14 @@ const getRoomByRoomName = async (req, res) => {
       roomName: roomName
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send(room)
+  res.send({
+    status: 200,
+    room: room
+  })
 }
 
 const getRoomListByRoomName = async (req, res) => {
@@ -205,6 +230,7 @@ const getRoomListByRoomName = async (req, res) => {
       }
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -212,7 +238,10 @@ const getRoomListByRoomName = async (req, res) => {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
   }
 
-  res.status(200).send(roomList)
+  res.send({
+    status: 200,
+    roomList: roomList
+  })
 }
 
 const getRoomListByRoomType = async (req, res) => {
@@ -227,6 +256,7 @@ const getRoomListByRoomType = async (req, res) => {
       roomType: roomType
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -234,7 +264,10 @@ const getRoomListByRoomType = async (req, res) => {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
   }
 
-  res.status(200).send(roomList)
+  res.send({
+    status: 200,
+    roomList: roomList
+  })
 }
 
 const searchRooms = async (req, res) => {
@@ -257,6 +290,7 @@ const searchRooms = async (req, res) => {
         roomType: roomType
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (roomName !== "" && buildingName !== "") {
@@ -269,6 +303,7 @@ const searchRooms = async (req, res) => {
         buildingName: buildingName
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (roomName !== "" && roomType !== "") {
@@ -281,6 +316,7 @@ const searchRooms = async (req, res) => {
         roomType: roomType
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (buildingName !== "" && roomType !== "") {
@@ -290,6 +326,7 @@ const searchRooms = async (req, res) => {
         roomType: roomType
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (roomName !== "") {
@@ -301,6 +338,7 @@ const searchRooms = async (req, res) => {
         }
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (buildingName !== "") {
@@ -309,6 +347,7 @@ const searchRooms = async (req, res) => {
         buildingName: buildingName
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else if (roomType !== "") {
@@ -317,12 +356,14 @@ const searchRooms = async (req, res) => {
         roomType: roomType
       })
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   } else {
     try {
       roomList = await RoomModel.find()
     } catch (error) {
+      console.error(error)
       res.status(500).send(error)
     }
   }
@@ -331,7 +372,10 @@ const searchRooms = async (req, res) => {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
   }
 
-  res.status(200).send(roomList)
+  res.send({
+    status: 200,
+    roomList: roomList
+  })
 }
 
 exports.addRoom = addRoom

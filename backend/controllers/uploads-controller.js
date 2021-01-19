@@ -4,7 +4,10 @@ const fileUpload = (req, res) => {
     destination: req.file.destination
   }
 
-  res.status(200).send(data)
+  res.send({
+    status: 200,
+    data: data
+  })
 }
 
 module.exports = {

@@ -17,12 +17,13 @@ const addUser = async (req, res) => {
       email: email
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (existingUser) {
-    res.status(409).send({
-      exists: true,
+    res.send({
+      status: 409,
       message: 'A user with the same email already exists.'
     })
   }
@@ -37,11 +38,13 @@ const addUser = async (req, res) => {
   try {
     await newUser.save()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(201).send({
-    message: 'New user added successfully!'
+  res.send({
+    status: 201,
+    message: 'User registered successfully!'
   })
 }
 
@@ -60,12 +63,13 @@ const addAdmin = async (req, res) => {
       email: email
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (existingUser) {
-    res.status(409).send({
-      exists: true,
+    res.send({
+      status: 409,
       message: 'A user with the same email already exists.'
     })
   }
@@ -81,11 +85,13 @@ const addAdmin = async (req, res) => {
   try {
     await newUser.save()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(201).send({
-    message: 'New user added successfully!'
+  res.send({
+    status: 201,
+    message: 'Administrator added successfully!'
   })
 }
 
@@ -108,6 +114,7 @@ const updateUser = async (req, res) => {
   try {
     user = await UserModel.findById(id)
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
@@ -116,12 +123,13 @@ const updateUser = async (req, res) => {
       email: email
     })
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
   if (existingUser && email !== user.email) {
-    res.status(409).send({
-      exists: true,
+    res.send({
+      status: 409,
       message: 'A user with the same email already exists.'
     })
   }
@@ -135,10 +143,12 @@ const updateUser = async (req, res) => {
   try {
     await user.save()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send({
+  res.send({
+    status: 200,
     message: 'User updated successfully!'
   })
 }
@@ -154,10 +164,12 @@ const deleteUser = async (req, res) => {
     user = await UserModel.findById(id)
     await user.remove()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send({
+  res.send({
+    status: 200,
     message: 'User deleted successfully!'
   })
 }
@@ -172,10 +184,14 @@ const getUser = async (req, res) => {
   try {
     user = await UserModel.findById(id)
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send(user)
+  res.send({
+    status: 200,
+    user: user
+  })
 }
 
 const getUserList = async (req, res) => {
@@ -184,10 +200,14 @@ const getUserList = async (req, res) => {
   try {
     userList = await UserModel.find()
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 
-  res.status(200).send(userList)
+  res.send({
+    status: 200,
+    userList: userList
+  })
 }
 
 exports.addUser = addUser
