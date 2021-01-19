@@ -143,8 +143,9 @@ const getRoomList = async (req, res) => {
     res.status(500).send(error)
   }
 
-  for (let i = 0; i < roomList.length; i++)
+  for (let i = 0; i < roomList.length; i++) {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
+  }
 
   res.status(200).send(roomList)
 }
@@ -164,8 +165,9 @@ const getRoomListByBuilding = async (req, res) => {
     res.status(500).send(error)
   }
 
-  for (let i = 0; i < roomList.length; i++)
+  for (let i = 0; i < roomList.length; i++) {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
+  }
 
   res.status(200).send(roomList)
 }
@@ -206,8 +208,9 @@ const getRoomListByRoomName = async (req, res) => {
     res.status(500).send(error)
   }
 
-  for (let i = 0; i < roomList.length; i++)
+  for (let i = 0; i < roomList.length; i++) {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
+  }
 
   res.status(200).send(roomList)
 }
@@ -227,8 +230,9 @@ const getRoomListByRoomType = async (req, res) => {
     res.status(500).send(error)
   }
 
-  for (let i = 0; i < roomList.length; i++)
+  for (let i = 0; i < roomList.length; i++) {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
+  }
 
   res.status(200).send(roomList)
 }
@@ -323,8 +327,9 @@ const searchRooms = async (req, res) => {
     }
   }
 
-  for (let i = 0; i < roomList.length; i++)
+  for (let i = 0; i < roomList.length; i++) {
     roomList[i].roomCapacity = roomList[i].roomCapacity.toString()
+  }
 
   res.status(200).send(roomList)
 }

@@ -32,20 +32,23 @@ const LoginForm = (props) => {
     setEmail(event.value)
     setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorEmail('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorEmail('Please enter a valid email address.')
+    }
   }
 
   const onChangePassword = (event) => {
     setPassword(event.value)
     setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorPassword('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorPassword('Please enter a valid password.')
+    }
   }
 
   function isDisabled() {
-    return !emailValid || !passwordValid
+    return !emailValid
+      || !passwordValid
   }
 
   const onSubmit = () => {

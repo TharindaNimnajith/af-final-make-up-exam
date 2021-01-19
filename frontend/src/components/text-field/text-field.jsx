@@ -46,7 +46,6 @@ const TextField = (
                    placeholder={placeholder}
                    value={value}
                    disabled={disabled}
-              // pattern={pattern}
                    minLength={minLength}
                    maxLength={maxLength}
                    onChange={(event) => {

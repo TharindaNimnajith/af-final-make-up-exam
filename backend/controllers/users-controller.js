@@ -175,8 +175,6 @@ const getUser = async (req, res) => {
     res.status(500).send(error)
   }
 
-  user.userCapacity = user.userCapacity.toString()
-
   res.status(200).send(user)
 }
 
@@ -188,9 +186,6 @@ const getUserList = async (req, res) => {
   } catch (error) {
     res.status(500).send(error)
   }
-
-  for (let i = 0; i < userList.length; i++)
-    userList[i].userCapacity = userList[i].userCapacity.toString()
 
   res.status(200).send(userList)
 }

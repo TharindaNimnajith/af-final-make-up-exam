@@ -40,44 +40,53 @@ const RegisterForm = (props) => {
     setFirstName(event.value)
     setFirstNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorFirstName('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorFirstName('Please enter a valid first name.')
+    }
   }
 
   const onChangeLastName = (event) => {
     setLastName(event.value)
     setLastNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorLastName('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorLastName('Please enter a valid last name.')
+    }
   }
 
   const onChangeEmail = (event) => {
     setEmail(event.value)
     setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorEmail('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorEmail('Please enter a valid email address.')
+    }
   }
 
   const onChangePassword = (event) => {
     setPassword(event.value)
     setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
     setErrorPassword('')
-    if (!event.eventInfo.target.validity.valid)
+    if (!event.eventInfo.target.validity.valid) {
       setErrorPassword('Please enter a strong password with at least 4 characters.')
+    }
   }
 
   const onChangeConfirmPassword = (event) => {
     setConfirmPassword(event.value)
     setConfirmPasswordValid(event.value === password)
     setErrorConfirmPassword('')
-    if (event.value !== password)
+    if (event.value !== password) {
       setErrorConfirmPassword('Please make sure your passwords match.')
+    }
   }
 
   function isDisabled() {
-    return !firstNameValid || !lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
+    return !firstNameValid
+      || !lastNameValid
+      || !emailValid
+      || !passwordValid
+      || !confirmPasswordValid
   }
 
   const onSubmit = () => {

@@ -18,12 +18,13 @@ const login = async (req, res) => {
     res.status(500).send(error)
   }
 
-  if (user && bcrypt.compareSync(password, user.password))
+  if (user && bcrypt.compareSync(password, user.password)) {
     res.status(200).send(user)
-  else
+  } else {
     res.status(401).send({
       status: 'Unauthorized'
     })
+  }
 }
 
 module.exports = {

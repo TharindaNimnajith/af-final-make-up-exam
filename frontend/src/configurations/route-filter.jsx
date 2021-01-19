@@ -4,7 +4,12 @@ import {AppContext} from '../context-api/app-context'
 import {checkUserInLocalStorage} from '../helpers/local-storage.helpers'
 import Loader from '../components/loader/loader'
 
-const RouteFilter = ({component: Component, isProtected, ...rest}) => {
+const RouteFilter = (
+  {
+    component: Component,
+    isProtected, ...rest
+  }
+) => {
   const appContext = useContext(AppContext)
 
   const [isAuth, setAuth] = useState(null)
