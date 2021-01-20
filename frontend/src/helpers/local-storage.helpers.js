@@ -1,4 +1,4 @@
-import {authStoreKey} from '../configurations/main.config'
+import {authStoreKey} from '../config/main.config'
 
 const setLocalStorageItem = (key, obj) => {
   try {
