@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './not-found-page.css'
+import './not-found-component.css'
 
-const NotFoundPage = () => {
+const NotFoundComponent = () => {
   return (
     <div id='not-found'>
       <div className='not-found'>
@@ -24,4 +24,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default NotFoundComponent

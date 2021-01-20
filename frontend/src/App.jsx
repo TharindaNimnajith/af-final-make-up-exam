@@ -16,6 +16,11 @@ const App = () => {
         <div>
           <BrowserRouter>
             <Switch>
+              <RouteFilter path={'/'}
+                           exact={true}
+                           needAuthentication={false}
+                           userType={all}
+                           component={Login}/>
               <RouteFilter path={'/login'}
                            exact={true}
                            needAuthentication={false}

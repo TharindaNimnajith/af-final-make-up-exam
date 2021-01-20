@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../../components/header/header'
 import Footer from '../../../components/footer/footer'
+import AdminDashboardComponent from './admin-dashboard-component/admin-dashboard-component'
 import './dashboard.css'
 
 const Dashboard = () => {
@@ -10,7 +11,7 @@ const Dashboard = () => {
         <Header/>
       </div>
       <div className='container dashboard-page'>
-        <label>Dashboard</label>
+        <AdminDashboardComponent/>
       </div>
       <div>
         <Footer/>

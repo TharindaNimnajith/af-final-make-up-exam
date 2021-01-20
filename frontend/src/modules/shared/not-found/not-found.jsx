@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../../components/header/header'
 import Footer from '../../../components/footer/footer'
-import NotFoundPage from './not-found-page/not-found-page'
+import NotFoundComponent from './not-found-component/not-found-component'
 import './not-found.css'
 
 const NotFound = () => {
@@ -11,7 +11,7 @@ const NotFound = () => {
         <Header/>
       </div>
       <div className='container not-found-page'>
-        <NotFoundPage/>
+        <NotFoundComponent/>
       </div>
       <div>
         <Footer/>
