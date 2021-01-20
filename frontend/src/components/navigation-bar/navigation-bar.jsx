@@ -1,52 +1,31 @@
-import React from 'react'
-import {Nav, NavItem, NavLink} from 'reactstrap'
+import React, {useContext} from 'react'
+import {Nav} from 'reactstrap'
+import {AppContext} from '../../context-api/app-context'
+import UserNavigationEntries from './user-navigation-entries/user-navigation-entries'
+import AdminNavigationEntries from './admin-navigation-entries/admin-navigation-entries'
 import './navigation-bar.css'
 
 const NavigationBar = () => {
+  const appContext = useContext(AppContext)
+
   return (
     <div className='sidebar'>
-      <Nav vertical>
-        <div>
-          <NavItem>
-            <NavLink href='/'>
-              <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
-            </NavLink>
-          </NavItem>
-        </div>
-        <div>
-          <NavItem>
-            <NavLink href='/'>
-              <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
-            </NavLink>
-          </NavItem>
-        </div>
-        <div>
-          <NavItem>
-            <NavLink href='/'>
-              <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
-            </NavLink>
-          </NavItem>
-        </div>
-        <div>
-          <NavItem>
-            <NavLink href='/'>
-              <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
-            </NavLink>
-          </NavItem>
-        </div>
-        <div>
-          <NavItem>
-            <NavLink href='/'>
-              <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
-            </NavLink>
-          </NavItem>
-        </div>
-      </Nav>
+      {
+        appContext.loginData.userType === 'User' ? (
+          <div>
+            <UserNavigationEntries/>
+          </div>
+        ) : appContext.loginData.userType === 'Admin' ? (
+          <div>
+            <AdminNavigationEntries/>
+          </div>
+        ) : (
+          <div>
+            <Nav vertical>
+            </Nav>
+          </div>
+        )
+      }
     </div>
   )
 }
