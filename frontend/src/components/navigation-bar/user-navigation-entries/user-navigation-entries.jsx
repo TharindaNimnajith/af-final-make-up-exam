@@ -8,7 +8,7 @@ const UserNavigationEntries = () => {
       <Nav vertical>
         <div>
           <NavItem>
-            <NavLink href='/'>
+            <NavLink href='/dashboard'>
               <i className='fa fa-fw fa-home m-1'/>
               <label>Navigation Link</label>
             </NavLink>
