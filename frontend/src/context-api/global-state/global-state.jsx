@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {AppContext} from './app-context'
+import {AppContext} from '../app-context'
 import './global-state.css'
 
 export const GlobalState = (props) => {
