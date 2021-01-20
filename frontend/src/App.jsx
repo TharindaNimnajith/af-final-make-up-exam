@@ -26,7 +26,7 @@ const App = () => {
                            needAuthentication={false}
                            userType={all}
                            component={Register}/>
-              <RouteFilter path={'/'}
+              <RouteFilter path={'/home'}
                            exact={true}
                            needAuthentication={true}
                            userType={user}

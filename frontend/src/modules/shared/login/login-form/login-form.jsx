@@ -66,7 +66,7 @@ const LoginForm = (props) => {
       if (res.data.status === 200) {
         setLocalStorageItem(authStoreKey, res.data.user)
         appContext.login(res.data.user)
-        props.history.push('/')
+        props.history.push('/home')
       } else if (res.data.status === 401) {
         setError(res.data.message)
       }

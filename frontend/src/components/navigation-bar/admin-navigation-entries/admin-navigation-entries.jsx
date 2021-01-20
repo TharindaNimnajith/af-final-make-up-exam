@@ -10,31 +10,31 @@ const AdminNavigationEntries = () => {
           <NavItem>
             <NavLink href='/dashboard'>
               <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
+              <label>Dashboard</label>
             </NavLink>
           </NavItem>
         </div>
         <div>
           <NavItem>
-            <NavLink href='/'>
+            <NavLink href='/home'>
               <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
+              <label>Home</label>
             </NavLink>
           </NavItem>
         </div>
         <div>
           <NavItem>
-            <NavLink href='/'>
+            <NavLink href='/login'>
               <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
+              <label>Login</label>
             </NavLink>
           </NavItem>
         </div>
         <div>
           <NavItem>
-            <NavLink href='/'>
+            <NavLink href='/register'>
               <i className='fa fa-fw fa-home m-1'/>
-              <label>Navigation Link</label>
+              <label>Register</label>
             </NavLink>
           </NavItem>
         </div>

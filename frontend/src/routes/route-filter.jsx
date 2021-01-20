@@ -47,7 +47,7 @@ const RouteFilter = (
                    )
                  } else if (appContext.loginData && appContext.loginData.userType === user) {
                    return (
-                     <Redirect to={'/'}/>
+                     <Redirect to={'/home'}/>
                    )
                  }
                } else if (!needAuthentication) {
@@ -66,7 +66,7 @@ const RouteFilter = (
                      )
                    } else if (appContext.loginData && appContext.loginData.userType === user) {
                      return (
-                       <Redirect to={'/'}/>
+                       <Redirect to={'/home'}/>
                      )
                    }
                  }
@@ -88,7 +88,7 @@ const RouteFilter = (
       {/*           )*/}
       {/*         } else if (!needAuthentication && authenticated) {*/}
       {/*           return (*/}
-      {/*             <Redirect to={'/'}/>*/}
+      {/*             <Redirect to={'/home'}/>*/}
       {/*           )*/}
       {/*         } else if (!needAuthentication || authenticated) {*/}
       {/*           return (*/}
