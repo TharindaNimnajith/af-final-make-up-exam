@@ -3,24 +3,26 @@ import {Redirect, Route} from 'react-router-dom'
 import {AppContext} from '../context-api/app-context'
 import {checkUserInLocalStorage} from '../helpers/local-storage.helpers'
 import Loader from '../components/loader/loader'
+import './route-filter.css'
 
 const RouteFilter = (
   {
     component: Component,
-    isProtected, ...rest
+    needAuthentication,
+    ...rest
   }
 ) => {
   const appContext = useContext(AppContext)
 
-  const [isAuth, setAuth] = useState(null)
+  const [authenticated, setAuthenticated] = useState(null)
 
   useEffect(() => {
     const localeStorageData = checkUserInLocalStorage()
     if (localeStorageData.status === true) {
       appContext.login(localeStorageData.result)
-      setAuth(true)
+      setAuthenticated(true)
     } else {
-      setAuth(false)
+      setAuthenticated(false)
     }
   }, [Component])
 
@@ -28,19 +30,19 @@ const RouteFilter = (
     <div>
       <Route {...rest}
              render={(props) => {
-               if (isProtected === true && isAuth === null) {
+               if (needAuthentication && authenticated === null) {
                  return (
                    <Loader/>
                  )
-               } else if (isProtected === true && isAuth === false) {
+               } else if (needAuthentication && !authenticated) {
                  return (
                    <Redirect to={'/login'}/>
                  )
-               } else if (isProtected === false && isAuth === true) {
+               } else if (!needAuthentication && authenticated) {
                  return (
                    <Redirect to={'/'}/>
                  )
-               } else if (isProtected === false || isAuth === true) {
+               } else if (!needAuthentication || authenticated) {
                  return (
                    <Component {...props} />
                  )

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import {BrowserRouter, Switch} from 'react-router-dom'
-import RouteFilter from './configurations/route-filter'
+import RouteFilter from './routes/route-filter'
 import Login from './modules/login/login'
 import Register from './modules/register/register'
 import Home from './modules/home/home'
@@ -13,18 +13,23 @@ const App = () => {
         <div>
           <BrowserRouter>
             <Switch>
-              <RouteFilter path={'/'}
-                           exact={true}
-                           isProtected={true}
-                           component={Home}/>
               <RouteFilter path={'/login'}
                            exact={true}
-                           isProtected={false}
+                           needAuthentication={false}
+                           userType={'User'}
                            component={Login}/>
               <RouteFilter path={'/register'}
                            exact={true}
-                           isProtected={false}
+                           needAuthentication={false}
                            component={Register}/>
+              <RouteFilter path={'/'}
+                           exact={true}
+                           needAuthentication={true}
+                           component={Home}/>
+              <RouteFilter path={'/admin'}
+                           exact={true}
+                           needAuthentication={true}
+                           component={Admin}/>
             </Switch>
           </BrowserRouter>
         </div>
