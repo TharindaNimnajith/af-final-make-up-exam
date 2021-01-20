@@ -11,11 +11,11 @@ const NavigationBar = () => {
   return (
     <div className='sidebar'>
       {
-        appContext.loginData.userType === 'User' ? (
+        appContext.loginData && appContext.loginData.userType === 'User' ? (
           <div>
             <UserNavigationEntries/>
           </div>
-        ) : appContext.loginData.userType === 'Admin' ? (
+        ) : appContext.loginData && appContext.loginData.userType === 'Admin' ? (
           <div>
             <AdminNavigationEntries/>
           </div>

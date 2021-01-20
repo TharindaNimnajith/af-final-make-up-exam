@@ -28,7 +28,7 @@ const Header = (props) => {
         <Fragment>
           <Navbar className='header d-flex justify-content-between w-100'
                   expand='md'>
-            <div>
+            <div className={appContext.loginData === null ? 'invisible' : ''}>
               <NavbarBrand>
                 <i className='icon fas fa-bars ms-4'
                    onClick={onNavBarDisplay}/>
