@@ -43,8 +43,7 @@ const checkUserInLocalStorage = () => {
 
 const getFromLocalStorage = key => {
   try {
-    const data = localStorage.getItem(key)
-    return JSON.parse(data)
+    return JSON.parse(localStorage.getItem(key))
   } catch (error) {
     console.error(error)
     return false
