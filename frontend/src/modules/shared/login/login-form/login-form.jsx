@@ -55,7 +55,7 @@ const LoginForm = props => {
     return !emailValid || !passwordValid
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setError('')
     const data = {
       'email': email.trim(),
@@ -65,8 +65,7 @@ const LoginForm = props => {
     axios.post(`${authApi}login`, data).then(res => {
       if (res.data.status === 200) {
         setLocalStorageItem(authStoreKey, res.data.user)
-        appContext.login(res.data.user).then(() => {
-        })
+        appContext.login(res.data.user)
         props.history.push('/home')
       } else if (res.data.status === 401) {
         setError(res.data.message)

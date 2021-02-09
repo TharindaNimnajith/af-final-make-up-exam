@@ -88,7 +88,7 @@ const RegisterForm = props => {
     return !firstNameValid || !lastNameValid || !emailValid || !passwordValid || !confirmPasswordValid
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setError('')
     const data = {
       'firstName': firstName.trim(),

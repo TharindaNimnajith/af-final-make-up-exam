@@ -10,20 +10,10 @@ const setLocalStorageItem = (key, obj) => {
   }
 }
 
-const removeFromLocalStorage = key => {
+const removeFromLocalStorage = async key => {
   try {
-    localStorage.removeItem(key)
+    await localStorage.removeItem(key)
     return true
-  } catch (error) {
-    console.error(error)
-    return false
-  }
-}
-
-const getFromLocalStorage = key => {
-  try {
-    const data = localStorage.getItem(key)
-    return JSON.parse(data)
   } catch (error) {
     console.error(error)
     return false
@@ -51,9 +41,18 @@ const checkUserInLocalStorage = () => {
   }
 }
 
+const getFromLocalStorage = key => {
+  try {
+    const data = localStorage.getItem(key)
+    return JSON.parse(data)
+  } catch (error) {
+    console.error(error)
+    return false
+  }
+}
+
 export {
   setLocalStorageItem,
   removeFromLocalStorage,
-  checkUserInLocalStorage,
-  getFromLocalStorage
+  checkUserInLocalStorage
 }
