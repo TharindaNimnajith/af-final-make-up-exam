@@ -9,7 +9,7 @@ import TextField from '../../../../components/text-field/text-field'
 import ButtonComponent from '../../../../components/button/button'
 import './register-form.css'
 
-const RegisterForm = (props) => {
+const RegisterForm = props => {
   const helperFirstName = 'Please enter your first name.'
   const helperLastName = 'Please enter your last name.'
   const helperEmail = 'Please enter your email address.'
@@ -38,27 +38,27 @@ const RegisterForm = (props) => {
 
   const [error, setError] = useState('')
 
-  const onChangeFirstName = (event) => {
+  const onChangeFirstName = async event => {
     setFirstName(event.value)
-    setFirstNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setFirstNameValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorFirstName('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorFirstName('Please enter a valid first name.')
     }
   }
 
-  const onChangeLastName = (event) => {
+  const onChangeLastName = async event => {
     setLastName(event.value)
-    setLastNameValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setLastNameValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorLastName('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorLastName('Please enter a valid last name.')
     }
   }
 
-  const onChangeEmail = (event) => {
+  const onChangeEmail = async event => {
     setEmail(event.value)
-    setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setEmailValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorEmail('')
     setError('')
     if (!event.eventInfo.target.validity.valid) {
@@ -66,16 +66,16 @@ const RegisterForm = (props) => {
     }
   }
 
-  const onChangePassword = (event) => {
+  const onChangePassword = async event => {
     setPassword(event.value)
-    setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setPasswordValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorPassword('')
     if (!event.eventInfo.target.validity.valid) {
       setErrorPassword('Please enter a strong password with at least 4 characters.')
     }
   }
 
-  const onChangeConfirmPassword = (event) => {
+  const onChangeConfirmPassword = async event => {
     setConfirmPassword(event.value)
     setConfirmPasswordValid(event.value === password)
     setErrorConfirmPassword('')

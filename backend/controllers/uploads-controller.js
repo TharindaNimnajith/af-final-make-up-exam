@@ -1,4 +1,4 @@
-const fileUpload = (req, res) => {
+const fileUpload = async (req, res) => {
   const data = {
     filename: req.file.filename,
     destination: req.file.destination

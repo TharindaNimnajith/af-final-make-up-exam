@@ -12,7 +12,7 @@ import TextField from '../../../../components/text-field/text-field'
 import ButtonComponent from '../../../../components/button/button'
 import './login-form.css'
 
-const LoginForm = (props) => {
+const LoginForm = props => {
   const appContext = useContext(AppContext)
 
   const helperEmail = 'Please enter your email address.'
@@ -31,9 +31,9 @@ const LoginForm = (props) => {
 
   const [error, setError] = useState('')
 
-  const onChangeEmail = (event) => {
+  const onChangeEmail = async event => {
     setEmail(event.value)
-    setEmailValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setEmailValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorEmail('')
     setError('')
     if (!event.eventInfo.target.validity.valid) {
@@ -41,9 +41,9 @@ const LoginForm = (props) => {
     }
   }
 
-  const onChangePassword = (event) => {
+  const onChangePassword = async event => {
     setPassword(event.value)
-    setPasswordValid(event.eventInfo.target.validity.valid && !isEmpty(event.value))
+    setPasswordValid(event.eventInfo.target.validity.valid && !await isEmpty(event.value))
     setErrorPassword('')
     setError('')
     if (!event.eventInfo.target.validity.valid) {

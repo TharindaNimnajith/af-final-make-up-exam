@@ -1,8 +1,8 @@
-const isEmpty = (value) => {
+const isEmpty = async value => {
   return value === '' || value === null || value === undefined || value === 'null' || value === 'undefined'
 }
 
-const dateToString = (value, format = 'dd-mm-YY') => {
+const dateToString = async (value, format = 'dd-mm-YY') => {
   const dateObj = new Date(value)
   switch (format) {
     case 'dd-mm-YY':

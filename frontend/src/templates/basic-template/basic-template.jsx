@@ -3,7 +3,7 @@ import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import './basic-template.css'
 
-const BasicTemplate = (props) => {
+const BasicTemplate = props => {
   return (
     <div>
       <Fragment>
@@ -13,8 +13,9 @@ const BasicTemplate = (props) => {
         <div>
           {
             React.Children.map(props.children, (child) => {
-              if (child)
+              if (child) {
                 return React.cloneElement(props.children)
+              }
             })
           }
         </div>

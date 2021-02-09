@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from 'reactstrap'
 import './button.css'
 
-const emptyFn = () => undefined
+const emptyFn = async () => undefined
 
 const ButtonComponent = (
   {

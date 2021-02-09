@@ -4,7 +4,7 @@ import Footer from '../../../components/footer/footer'
 import RegisterForm from './register-form/register-form'
 import './register.css'
 
-const Register = (props) => {
+const Register = props => {
   return (
     <div>
       <div>

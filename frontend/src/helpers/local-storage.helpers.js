@@ -10,7 +10,7 @@ const setLocalStorageItem = (key, obj) => {
   }
 }
 
-const removeFromLocalStorage = (key) => {
+const removeFromLocalStorage = key => {
   try {
     localStorage.removeItem(key)
     return true
@@ -20,7 +20,7 @@ const removeFromLocalStorage = (key) => {
   }
 }
 
-const getFromLocalStorage = (key) => {
+const getFromLocalStorage = key => {
   try {
     const data = localStorage.getItem(key)
     return JSON.parse(data)

@@ -11,10 +11,11 @@ const UserHomeComponent = () => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    loadData()
+    loadData().then(() => {
+    })
   }, [])
 
-  const loadData = () => {
+  const loadData = async () => {
     setLoader(true)
     axios.get(`${usersApi}users`).then(res => {
       setData(res.data.userList)
@@ -24,6 +25,14 @@ const UserHomeComponent = () => {
       setLoader(false)
       console.error(error)
     })
+  }
+
+  const onEdit = async id => {
+    console.log(id)
+  }
+
+  const onDelete = async id => {
+    console.log(id)
   }
 
   return (
@@ -79,10 +88,16 @@ const UserHomeComponent = () => {
                     {item.userType}
                   </td>
                   <td className='text-center'>
-                    <i className='fas fa-pencil-alt edit'/>
+                    <button onClick={() => onEdit(item._id)}
+                            className='bg-transparent border-0'>
+                      <i className='fas fa-pencil-alt edit'/>
+                    </button>
                   </td>
                   <td className='text-center'>
-                    <i className='fas fa-trash-alt delete'/>
+                    <button onClick={() => onDelete(item._id)}
+                            className='bg-transparent border-0'>
+                      <i className='fas fa-trash-alt delete'/>
+                    </button>
                   </td>
                 </tr>
               )

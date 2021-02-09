@@ -6,7 +6,7 @@ const Loader = () => {
   return (
     <div className='preloader'>
       <div className='status'>
-        <Spinner color={'primary'}/>
+        <Spinner color='primary'/>
       </div>
     </div>
   )

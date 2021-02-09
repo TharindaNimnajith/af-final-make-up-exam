@@ -1,7 +1,7 @@
 const express = require('express')
-const router = express.Router()
-
 const UsersController = require('../controllers/users-controller')
+
+const router = express.Router()
 
 router.post('/users', UsersController.addUser)
 router.post('/admin', UsersController.addAdmin)

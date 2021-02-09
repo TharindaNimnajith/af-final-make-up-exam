@@ -1,7 +1,7 @@
 const express = require('express')
-const router = express.Router()
-
 const RoomController = require('../controllers/rooms-controller')
+
+const router = express.Router()
 
 router.post('/rooms', RoomController.addRoom)
 router.put('/rooms/:id', RoomController.updateRoom)

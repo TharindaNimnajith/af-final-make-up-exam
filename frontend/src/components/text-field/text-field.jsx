@@ -16,7 +16,6 @@ const TextField = (
     errorText = '',
     helperText = '',
     disabled = false,
-    // pattern = '[a-zA-Z0-9!@#$&()\\\\-`.+,/\\"\']+[a-zA-Z0-9!@#$&()\\\\-`.+,/\\"\' ]+',
     minLength = 1,
     maxLength = 1000,
     onChangeFn = empty
@@ -53,6 +52,7 @@ const TextField = (
                        value: event.target.value,
                        name: name,
                        eventInfo: event
+                     }).then(() => {
                      })
                    }}/>
             <small>

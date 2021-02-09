@@ -7,18 +7,18 @@ import {AppContext} from '../../global/app-context'
 import NavigationBar from '../navigation-bar/navigation-bar'
 import './header.css'
 
-const Header = (props) => {
+const Header = props => {
   const appContext = useContext(AppContext)
 
   const [display, setDisplay] = useState(false)
 
-  const onLogout = () => {
-    removeFromLocalStorage(authStoreKey)
-    appContext.logout()
+  const onLogout = async () => {
+    await removeFromLocalStorage(authStoreKey)
+    await appContext.logout()
     props.history.push('/login')
   }
 
-  const onNavBarDisplay = () => {
+  const onNavBarDisplay = async () => {
     setDisplay(!display)
   }
 

@@ -4,7 +4,7 @@ import Footer from '../../../components/footer/footer'
 import LoginForm from './login-form/login-form'
 import './login.css'
 
-const Login = (props) => {
+const Login = props => {
   return (
     <div>
       <div>
