@@ -61,8 +61,8 @@ const LoginForm = (props) => {
       'email': email.trim(),
       'password': password
     }
+    setLoader(true)
     axios.post(`${authApi}login`, data).then(res => {
-      setLoader(true)
       if (res.data.status === 200) {
         setLocalStorageItem(authStoreKey, res.data.user)
         appContext.login(res.data.user)

@@ -4,7 +4,7 @@
 }
 
 .login-header {
-    background-color: #626ed4 !important;
+    background-color: #626ed4;
 }
 
 .login-icon {
@@ -28,5 +28,5 @@
 }
 
 .error {
-    color: red !important;
+    color: red;
 }

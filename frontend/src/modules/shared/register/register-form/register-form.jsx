@@ -96,8 +96,8 @@ const RegisterForm = (props) => {
       'email': email.trim(),
       'password': password
     }
+    setLoader(true)
     axios.post(`${usersApi}users`, data).then(res => {
-      setLoader(true)
       if (res.data.status === 201) {
         setLoader(false)
         props.history.push('/login')

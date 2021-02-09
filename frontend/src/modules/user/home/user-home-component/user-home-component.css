@@ -1,1 +1,11 @@
-/**/
+.error {
+    color: red;
+}
+
+.edit {
+    color: cadetblue;
+}
+
+.delete {
+    color: red;
+}
