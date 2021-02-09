@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {Navbar, NavbarBrand} from 'reactstrap'
 import {removeFromLocalStorage} from '../../helpers/local-storage.helpers'
 import {authStoreKey} from '../../config/main.config'
-import {AppContext} from '../../context-api/app-context'
+import {AppContext} from '../../global/app-context'
 import NavigationBar from '../navigation-bar/navigation-bar'
 import './header.css'
 

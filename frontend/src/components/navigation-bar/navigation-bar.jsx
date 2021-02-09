@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {Nav} from 'reactstrap'
-import {AppContext} from '../../context-api/app-context'
+import {AppContext} from '../../global/app-context'
 import UserNavigationEntries from './user-navigation-entries/user-navigation-entries'
 import AdminNavigationEntries from './admin-navigation-entries/admin-navigation-entries'
 import './navigation-bar.css'
