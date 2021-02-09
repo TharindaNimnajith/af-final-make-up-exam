@@ -1,8 +1,8 @@
 import {authStoreKey} from '../config/main.config'
 
-const setLocalStorageItem = (key, obj) => {
+const setLocalStorageItem = async (key, obj) => {
   try {
-    localStorage.setItem(key, JSON.stringify(obj))
+    await localStorage.setItem(key, JSON.stringify(obj))
     return true
   } catch (error) {
     console.error(error)
