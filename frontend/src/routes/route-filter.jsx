@@ -21,7 +21,8 @@ const RouteFilter = (
   useEffect(() => {
     const localeStorageData = checkUserInLocalStorage()
     if (localeStorageData.status === true) {
-      appContext.login(localeStorageData.result)
+      appContext.login(localeStorageData.result).then(() => {
+      })
       setAuthenticated(true)
     } else {
       setAuthenticated(false)
@@ -31,35 +32,17 @@ const RouteFilter = (
   return (
     <div>
       <Route {...rest}
-             render={(props) => {
-               if (needAuthentication && authenticated === null) {
-                 return (
-                   <Loader/>
-                 )
-               } else if (needAuthentication && !authenticated) {
-                 return (
-                   <Redirect to={'/login'}/>
-                 )
-               } else if (!needAuthentication && authenticated) {
-                 if (appContext.loginData && appContext.loginData.userType === admin) {
+             render={
+               props => {
+                 if (needAuthentication && authenticated === null) {
                    return (
-                     <Redirect to={'/dashboard'}/>
+                     <Loader/>
                    )
-                 } else if (appContext.loginData && appContext.loginData.userType === user) {
+                 } else if (needAuthentication && !authenticated) {
                    return (
-                     <Redirect to={'/home'}/>
+                     <Redirect to={'/login'}/>
                    )
-                 }
-               } else if (!needAuthentication) {
-                 return (
-                   <Component {...props} />
-                 )
-               } else if (authenticated) {
-                 if (userType === all || (appContext.loginData && appContext.loginData.userType === userType)) {
-                   return (
-                     <Component {...props} />
-                   )
-                 } else {
+                 } else if (!needAuthentication && authenticated) {
                    if (appContext.loginData && appContext.loginData.userType === admin) {
                      return (
                        <Redirect to={'/dashboard'}/>
@@ -69,33 +52,32 @@ const RouteFilter = (
                        <Redirect to={'/home'}/>
                      )
                    }
+                 } else if (!needAuthentication) {
+                   return (
+                     <Component {...props} />
+                   )
+                 } else if (authenticated) {
+                   if (userType === all || (appContext.loginData && appContext.loginData.userType === userType)) {
+                     return (
+                       <Component {...props} />
+                     )
+                   } else {
+                     if (appContext.loginData && appContext.loginData.userType === admin) {
+                       return (
+                         <Redirect to={'/dashboard'}/>
+                       )
+                     } else if (appContext.loginData && appContext.loginData.userType === user) {
+                       return (
+                         <Redirect to={'/home'}/>
+                       )
+                     }
+                   }
+                 } else {
+                   return (
+                     <Loader/>
+                   )
                  }
-               } else {
-                 return (
-                   <Loader/>
-                 )
-               }
-             }}/>
-      {/*<Route {...rest}*/}
-      {/*       render={(props) => {*/}
-      {/*         if (needAuthentication && authenticated === null) {*/}
-      {/*           return (*/}
-      {/*             <Loader/>*/}
-      {/*           )*/}
-      {/*         } else if (needAuthentication && !authenticated) {*/}
-      {/*           return (*/}
-      {/*             <Redirect to={'/login'}/>*/}
-      {/*           )*/}
-      {/*         } else if (!needAuthentication && authenticated) {*/}
-      {/*           return (*/}
-      {/*             <Redirect to={'/home'}/>*/}
-      {/*           )*/}
-      {/*         } else if (!needAuthentication || authenticated) {*/}
-      {/*           return (*/}
-      {/*             <Component {...props} />*/}
-      {/*           )*/}
-      {/*         }*/}
-      {/*       }}/>*/}
+               }}/>
     </div>
   )
 }

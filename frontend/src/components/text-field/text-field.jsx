@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import {FormGroup, Input, Label} from 'reactstrap'
 import './text-field.css'
 
-const empty = () => undefined
+const empty = async () => undefined
 
 const TextField = (
   {

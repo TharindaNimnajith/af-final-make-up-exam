@@ -5,11 +5,11 @@ import './global-state.css'
 export const GlobalState = props => {
   const [loginData, setLoginData] = useState(null)
 
-  const login = data => {
+  const login = async data => {
     setLoginData(data)
   }
 
-  const logout = () => {
+  const logout = async () => {
     setLoginData(null)
   }
 

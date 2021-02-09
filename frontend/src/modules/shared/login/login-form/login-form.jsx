@@ -65,7 +65,8 @@ const LoginForm = props => {
     axios.post(`${authApi}login`, data).then(res => {
       if (res.data.status === 200) {
         setLocalStorageItem(authStoreKey, res.data.user)
-        appContext.login(res.data.user)
+        appContext.login(res.data.user).then(() => {
+        })
         props.history.push('/home')
       } else if (res.data.status === 401) {
         setError(res.data.message)

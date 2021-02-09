@@ -88,16 +88,12 @@ const UserHomeComponent = () => {
                     {item.userType}
                   </td>
                   <td className='text-center'>
-                    <button onClick={() => onEdit(item._id)}
-                            className='bg-transparent border-0'>
-                      <i className='fas fa-pencil-alt edit'/>
-                    </button>
+                    <i className='fas fa-pencil-alt edit'
+                       onClick={() => onEdit(item._id)}/>
                   </td>
                   <td className='text-center'>
-                    <button onClick={() => onDelete(item._id)}
-                            className='bg-transparent border-0'>
-                      <i className='fas fa-trash-alt delete'/>
-                    </button>
+                    <i className='fas fa-trash-alt delete'
+                       onClick={() => onDelete(item._id)}/>
                   </td>
                 </tr>
               )
