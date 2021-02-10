@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from 'react'
-import {Table} from 'reactstrap'
+import {Modal, ModalBody, ModalFooter, ModalHeader, Table} from 'reactstrap'
 import axios from 'axios'
 import {usersApi} from '../../../../config/api.config'
 import Loader from '../../../../components/loader/loader'
+import ButtonComponent from '../../../../components/button/button'
 import './user-home-component.css'
 
 const UserHomeComponent = () => {
   const [loader, setLoader] = useState(false)
-  const [error, setError] = useState('')
+
+  const [successModal, setSuccessModal] = useState(false)
+  const [message, setMessage] = useState('')
+
   const [data, setData] = useState(null)
+
+  const [modal, setModal] = useState(false)
+  const [deleteId, setDeleteId] = useState('')
+
+  const [error, setError] = useState('')
 
   useEffect(() => {
     loadData().then(() => {
@@ -32,7 +41,39 @@ const UserHomeComponent = () => {
   }
 
   const onDelete = async id => {
-    console.log(id)
+    setDeleteId(id)
+    await toggle()
+  }
+
+  const toggle = async () => {
+    setModal(!modal)
+  }
+
+  const toggleSuccessModal = async () => {
+    setSuccessModal(!successModal)
+  }
+
+  const confirmDelete = async () => {
+    setError('')
+    setLoader(true)
+    axios.delete(`${usersApi}users/${deleteId}`).then(res => {
+      if (res.data.status === 200) {
+        setData(data.filter(item => item._id !== deleteId))
+        setMessage(res.data.message)
+        toggle()
+        toggleSuccessModal()
+      } else {
+        toggle()
+        setError('An unexpected error occurred. Please try again later.')
+        console.error(error)
+      }
+      setLoader(false)
+    }).catch(error => {
+      toggle()
+      setError('An unexpected error occurred. Please try again later.')
+      setLoader(false)
+      console.error(error)
+    })
   }
 
   return (
@@ -42,6 +83,51 @@ const UserHomeComponent = () => {
           <Loader/>
         ) : null
       }
+      <div>
+        <Modal isOpen={successModal}
+               toggle={toggleSuccessModal}
+               className='modal-close'>
+          <ModalHeader toggle={toggleSuccessModal}
+                       className='text-uppercase title'>
+            Success!
+          </ModalHeader>
+          <ModalBody>
+            {message}
+          </ModalBody>
+          <ModalFooter>
+            <ButtonComponent btnText={'Ok'}
+                             isFullWidth={false}
+                             elementStyle={'ok-button'}
+                             disabled={false}
+                             onClickFn={toggleSuccessModal}/>
+          </ModalFooter>
+        </Modal>
+      </div>
+      <div>
+        <Modal isOpen={modal}
+               toggle={toggle}
+               className='modal-close'>
+          <ModalHeader toggle={toggle}
+                       className='text-uppercase'>
+            Delete User
+          </ModalHeader>
+          <ModalBody>
+            Are you sure you want to delete this user?
+          </ModalBody>
+          <ModalFooter>
+            <ButtonComponent btnText={'Yes'}
+                             isFullWidth={false}
+                             elementStyle={'yes-button'}
+                             disabled={false}
+                             onClickFn={confirmDelete}/>
+            <ButtonComponent btnText={'No'}
+                             isFullWidth={false}
+                             elementStyle={'no-button'}
+                             disabled={false}
+                             onClickFn={toggle}/>
+          </ModalFooter>
+        </Modal>
+      </div>
       <div>
         <small>
           {
